@@ -1,0 +1,36 @@
+<h1>New address</h1>                                          
+
+<% form_for(:address, :url => person_addresses_url(@person.id)) do |form| %>
+
+	<table>
+		<tr>
+			<th><label for="address_address">Address:</label></th>
+			<td><%= form.text_field :address %></td>
+			<td><%= error_message_on :address, :address %></td>
+		</tr>                                   
+
+		<tr>
+			<th><label for="address_zipcode">Zipcode:</label></th>
+			<td><%= form.text_field :zipcode %></td>
+			<td><%= error_message_on :address, :zipcode %></td>
+		</tr>                                   
+
+		<tr>
+			<th><label for="address_city">City:</label></th>
+			<td><%= form.text_field :city %></td>
+			<td><%= error_message_on :address, :city %></td>
+		</tr>                                   
+
+		<tr>
+			<th><label for="address_country">Country:</label></th>
+			<td><%= form.text_field :country %></td>
+			<td><%= error_message_on :address, :country %></td>
+		</tr>                                   
+
+		<tr>
+			<th>&nbsp;</th>
+			<td><%= submit_tag "Save", :class => "button" %></td>
+		</tr>
+	</table>
+<% end %>
+

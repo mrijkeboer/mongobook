@@ -1,0 +1,22 @@
+<h1>New contact method</h1>                                          
+
+<% form_for(:contact_method, :url => person_contact_methods_url(@person.id)) do |form| %>
+	<table>
+		<tr>
+			<th><label for="contact_method_name">Name:</label></th>
+			<td><%= form.text_field :name %></td>
+			<td><%= error_message_on :contact_method, :name %></td>
+		</tr>                                   
+
+		<tr>
+			<th><label for="contact_method_value">Value:</label></th>
+			<td><%= form.text_field :value %></td>
+			<td><%= error_message_on :contact_method, :value %></td>
+		</tr>                                   
+
+		<tr>
+			<th>&nbsp;</th>
+			<td><%= submit_tag "Save", :class => "button" %></td>
+		</tr>
+	</table>
+<% end %>

@@ -1,0 +1,28 @@
+<h1>Edit user</h1>
+<% form_for(:user, :url => user_url(@user), :html => { :method => :put }) do |form| %>
+
+	<table>
+		<tr>
+			<th><label for="user_username">Username:</label></th>
+			<td><%= form.text_field :username, :disabled => "disabled" %></td>
+			<td><%= error_message_on :user, :username %></td>
+		</tr>
+
+		<tr>
+			<th><label for="user_password">Password:</label></th>
+			<td><%= form.password_field :password %></td>
+			<td><%= error_message_on :user, :password %></td>
+		</tr>
+
+		<tr>
+			<th><label for="user_password_confirmation">Confirm:</label></th>
+			<td><%= form.password_field :password_confirmation %></td>
+			<td><%= error_message_on :user, :password_confirmation %></td>
+		</tr>
+
+		<tr>
+			<th>&nbsp;</th>
+			<td><%= submit_tag "Save", :class => "button" %></td>
+		</tr>
+	</table>
+<% end %>

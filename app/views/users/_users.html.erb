@@ -1,0 +1,15 @@
+<% for user in @users %>
+	<tr>
+		<td>
+			<%= h(user.username) %>
+		</td>
+
+		<td>
+			<%= link_to 'Edit', edit_user_url(user) %>
+		</td>
+
+		<td>
+			<%= link_to 'Delete', user_url(user), :method => :delete %>
+		</td>
+	</tr>
+<% end %>

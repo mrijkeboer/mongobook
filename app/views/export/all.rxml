@@ -1,0 +1,28 @@
+xml.addressbook do
+	xml.people do
+		for p in @people
+			xml.person(:name => p.name, :sortkey => p.sort_key) do
+				xml.addresses do
+					for a in p.addresses
+						xml.address(
+							:address => a.address,
+							:zipcode => a.zipcode,
+							:city => a.city,
+							:country => a.country
+						)
+					end
+				end
+
+				xml.contact_methods do
+					for m in p.contact_methods
+						xml.contact_method(
+							:name => m.name,
+							:value => m.value
+						)
+					end
+				end
+
+			end
+		end
+	end
+end

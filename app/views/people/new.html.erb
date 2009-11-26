@@ -1,0 +1,24 @@
+<h1>New person</h1>                                          
+
+<% form_for(:person, :url => people_url) do |form| %>
+
+	<table>
+		<tr>
+			<th><label for="person_name"><b>Name:</b></label></th>
+			<td><%= form.text_field :name %></td>
+			<td><%= error_message_on :person, :name %></td>
+		</tr>                                   
+
+		<tr>
+			<th><label for="person_sortkey">Sort key:</label></th>
+			<td><%= form.text_field :sort_key %></td>
+			<td><%= error_message_on :person, :sort_key %></td>
+		</tr>                                   
+
+		<tr>
+			<th>&nbsp;</th>
+			<td><%= submit_tag "Save", :class => "button" %></td>
+		</tr>
+	</table>
+<% end %>
+
