@@ -7,6 +7,19 @@ class PeopleController < ApplicationController
 	end
 
 
+	def search
+		if @search_key = params[:search_key]
+			@people = Person.find(
+				:all,
+				:conditions => {:search_key => /#{@search_key.downcase}/},
+				:order => 'sort_key'
+			)
+		else
+			@people = Array.new
+		end
+	end
+
+
 	def show
 		@person = Person.find(params[:id])
 	end
