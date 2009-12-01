@@ -1,73 +1,86 @@
-<h1>Person details</h1>                                          
+<p class="edit"><%= link_to 'Edit', edit_person_url(@person) -%></p>
+<h1><%= h(@person.name) -%></h1>                                          
 
-<table>
-	<tr>
-		<th>Name:</th>
-		<td><%= h(@person.name) -%></td>
-		<td><%= link_to 'Edit', edit_person_url(@person) -%></td>
-	</tr>                                   
-
+<table class="show">
 	<tr>
 		<th>Sort key:</th>
 		<td><%= h(@person.sort_key) -%></td>
 	</tr>                                   
-
-
-	<% for address in @person.addresses %>
-		<tr><td>&nbsp;</td></tr>
-		<tr>
-			<th>Address:</th>
-			<td><%= h(address.address) -%></th>
-			<td>
-				<%= link_to 'Edit', edit_person_address_url(@person.id, address) -%>,
-				<%= link_to 'Delete', person_address_url(@person.id, address), :method => :delete %>
-			</td>
-		</tr>
-		<tr>
-			<th>Zipcode:</th>
-			<td><%= h(address.zipcode) -%></th>
-		</tr>
-		<tr>
-			<th>City:</th>
-			<td><%= h(address.city) -%></th>
-		</tr>
-		<tr>
-			<th>Country:</th>
-			<td><%= h(address.country) -%></th>
-		</tr>
-	<% end %>
-	<tr>
-		<td>&nbsp;</td>
-		<td><%= link_to 'Add', new_person_address_url(@person.id) -%></td>
-	</tr>
-	<tr><td>&nbsp;</td></tr>
-
-	<% for method in @person.contact_methods %>
-		<tr>
-			<th><%= h(method.name) -%>:</th>
-			<td><%= h(method.value) -%></th>
-			<td>
-				<%= link_to 'Edit', edit_person_contact_method_url(@person.id, method) -%>,
-				<%= link_to 'Delete', person_contact_method_url(@person.id, method), :method => :delete %>
-			</td>
-		</tr>
-	<% end %>
-	<tr>
-		<td>&nbsp;</td>
-		<td><%= link_to 'Add', new_person_contact_method_url(@person.id) -%></td>
-	</tr>
-
-	<tr><td>&nbsp;</td></tr>
-
 	<tr>
 		<th>Created:</th>
-		<td><%= h(@person.created_at) -%></td>
+		<td><%= @person.created_at.strftime('%Y-%m-%d') -%></td>
 	</tr>
 
 	<tr>
 		<th>Modified:</th>
-		<td><%= h(@person.updated_at) -%></td>
+		<td><%= @person.updated_at.strftime('%Y-%m-%d') -%></td>
 	</tr>
-
 </table>
+
+<hr />
+
+<% counter = 0 %>
+<% for address in @person.addresses %>
+	<p class="edit">
+	<%= link_to 'Edit', edit_person_address_url(@person.id, address) -%>,
+	<%= link_to 'Delete', person_address_url(@person.id, address), :method => :delete %>
+	</p>
+	<table class="show">
+		<% if address.address.to_s.length > 0 %>
+			<tr>
+				<th>Address:</th>
+				<td><%= h(address.address) -%></th>
+			</tr>
+		<% end %>
+
+		<% if address.zipcode.to_s.length > 0 %>
+			<tr>
+				<th>Zipcode:</th>
+				<td><%= h(address.zipcode) -%></th>
+			</tr>
+		<% end %>
+
+		<% if address.city.to_s.length > 0 %>
+			<tr>
+				<th>City:</th>
+				<td><%= h(address.city) -%></th>
+			</tr>
+		<% end %>
+
+		<% if address.country.to_s.length > 0 %>
+			<tr>
+				<th>Country:</th>
+				<td><%= h(address.country) -%></th>
+			</tr>
+		<% end %>
+
+	</table>
+	<% counter += 1 %>
+	<% if counter < @person.addresses.length %>
+		<br />
+	<% end %>
+<% end %>
+
+<p class="add">
+<%= link_to 'Add address', new_person_address_url(@person.id) -%>
+</p>
+
+<hr /> 
+
+<% for method in @person.contact_methods %>
+	<p class="edit">
+	<%= link_to 'Edit', edit_person_contact_method_url(@person.id, method) -%>,
+	<%= link_to 'Delete', person_contact_method_url(@person.id, method), :method => :delete %>
+	</p>
+	<table class="show">
+		<tr>
+			<th><%= h(method.name) -%>:</th>
+			<td><%= h(method.value) -%></th>
+		</tr>
+	</table>
+<% end %>
+
+<p class="add">
+<%= link_to 'Add contact method', new_person_contact_method_url(@person.id) -%>
+</p>
 
