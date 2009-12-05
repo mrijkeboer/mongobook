@@ -20,7 +20,7 @@ class User
 
 
 	def username=(val)
-		if new_record?
+		if self.username.to_s.length  == 0 or self.new_record?
 			self[:username] = val.to_s.downcase
 		end
 	end
@@ -70,8 +70,6 @@ class User
 	end
 
 
-
-	
 	def password_hash
 		return BCrypt::Password.new(self[:password_hash])
 	end
@@ -83,19 +81,17 @@ class User
 
 
 	private
-
+	
 
 	def valid_password
-		if @password.to_s.length > 0
-			if @password.to_s.length < 5
-				errors.add(:password, "is too short (minimum is 6 characters)")
-			elsif @password.to_s.length > 250
-				errors.add(:password, "is too long (maximum is 250 characters)")
-			end
+		if @password.to_s.length < 5
+			errors.add(:password, "is too short (minimum is 5 characters)")
+		elsif @password.to_s.length > 250
+			errors.add(:password, "is too long (maximum is 250 characters)")
+		end
 
-			if @password.to_s != @confirmation.to_s
-				errors.add(:password, "doesn't match confirmation")
-			end
+		if @password.to_s != @confirmation.to_s
+			errors.add(:password, "doesn't match confirmation")
 		end
 	end
 
