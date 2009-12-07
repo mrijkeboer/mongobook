@@ -1,4 +1,4 @@
-class AddressesController < ApplicationController
+class TwittersController < ApplicationController
 
 	layout "people"
 
@@ -16,21 +16,21 @@ class AddressesController < ApplicationController
 
 
 	def new
-		@address = Address.new
+		@twitter = Twitter.new
 	end
 
 
 	def edit
-		@address = @person.addresses.find(params[:id])
+		@twitter = @person.twitters.find(params[:id])
 	end
 
 
 	def create
-		@address = Address.new(params[:address])
-		@person.addresses << @address
+		@twitter = Twitter.new(params[:twitter])
+		@person.twitters << @twitter
 
 		if @person.save
-			flash[:notice] = 'Address added.'
+			flash[:notice] = 'Twitter added.'
 			redirect_to person_url(@person)
 		else
 			render :action => :new
@@ -39,10 +39,10 @@ class AddressesController < ApplicationController
 
 
 	def update
-		@address = @person.addresses.find(params[:id])
+		@twitter = @person.twitters.find(params[:id])
 
-		if @address.update_attributes(params[:address])
-			flash[:notice] = 'Address updated.'
+		if @twitter.update_attributes(params[:twitter])
+			flash[:notice] = 'Twitter updated.'
 			redirect_to person_url(@person)
 		else
 			render :action => :edit
@@ -51,11 +51,11 @@ class AddressesController < ApplicationController
 
 
 	def destroy
-		@address = @person.addresses.find(params[:id])
+		@twitter = @person.twitters.find(params[:id])
 
-		if @person.addresses.delete(@address)
+		if @person.twitters.delete(@twitter)
 			if @person.save
-				flash[:notice] = 'Address deleted.'
+				flash[:notice] = 'Twitter deleted.'
 			end
 		end
 

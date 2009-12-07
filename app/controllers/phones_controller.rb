@@ -1,4 +1,4 @@
-class AddressesController < ApplicationController
+class PhonesController < ApplicationController
 
 	layout "people"
 
@@ -16,21 +16,21 @@ class AddressesController < ApplicationController
 
 
 	def new
-		@address = Address.new
+		@phone = Phone.new
 	end
 
 
 	def edit
-		@address = @person.addresses.find(params[:id])
+		@phone = @person.phones.find(params[:id])
 	end
 
 
 	def create
-		@address = Address.new(params[:address])
-		@person.addresses << @address
+		@phone = Phone.new(params[:phone])
+		@person.phones << @phone
 
 		if @person.save
-			flash[:notice] = 'Address added.'
+			flash[:notice] = 'Phone added.'
 			redirect_to person_url(@person)
 		else
 			render :action => :new
@@ -39,10 +39,10 @@ class AddressesController < ApplicationController
 
 
 	def update
-		@address = @person.addresses.find(params[:id])
+		@phone = @person.phones.find(params[:id])
 
-		if @address.update_attributes(params[:address])
-			flash[:notice] = 'Address updated.'
+		if @phone.update_attributes(params[:phone])
+			flash[:notice] = 'Phone updated.'
 			redirect_to person_url(@person)
 		else
 			render :action => :edit
@@ -51,11 +51,11 @@ class AddressesController < ApplicationController
 
 
 	def destroy
-		@address = @person.addresses.find(params[:id])
+		@phone = @person.phones.find(params[:id])
 
-		if @person.addresses.delete(@address)
+		if @person.phones.delete(@phone)
 			if @person.save
-				flash[:notice] = 'Address deleted.'
+				flash[:notice] = 'Phone deleted.'
 			end
 		end
 

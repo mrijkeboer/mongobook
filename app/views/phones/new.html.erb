@@ -1,0 +1,22 @@
+<h1>Add phone</h1>                                          
+
+<% form_for(:phone, :url => person_phones_url(@person.id)) do |form| %>
+	<table>
+		<tr>
+			<th><label for="phone_number">Number:</label></th>
+			<td><%= form.text_field :number %></td>
+			<td><%= error_message_on :phone, :number %></td>
+		</tr>                                   
+
+		<tr>
+			<th><label for="phone_type">Type:</label></th>
+			<td><%= form.text_field :type %></td>
+			<td><%= error_message_on :phone, :type %></td>
+		</tr>                                   
+
+		<tr>
+			<th>&nbsp;</th>
+			<td><%= submit_tag "Add", :class => "button" %></td>
+		</tr>
+	</table>
+<% end %>

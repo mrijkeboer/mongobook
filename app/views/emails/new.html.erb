@@ -1,0 +1,16 @@
+<h1>Add email</h1>                                          
+
+<% form_for(:email, :url => person_emails_url(@person.id)) do |form| %>
+	<table>
+		<tr>
+			<th><label for="email_address">Address:</label></th>
+			<td><%= form.text_field :address %></td>
+			<td><%= error_message_on :email, :address %></td>
+		</tr>                                   
+
+		<tr>
+			<th>&nbsp;</th>
+			<td><%= submit_tag "Add", :class => "button" %></td>
+		</tr>
+	</table>
+<% end %>

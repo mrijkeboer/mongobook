@@ -1,23 +1,56 @@
 xml.addressbook do
 	xml.people do
-		for p in @people
-			xml.person(:name => p.name, :sortkey => p.sort_key) do
+		for person in @people
+			xml.person(:name => person.name, :sortkey => person.sort_key) do
 				xml.addresses do
-					for a in p.addresses
+					for address in person.addresses
 						xml.address(
-							:address => a.address,
-							:zipcode => a.zipcode,
-							:city => a.city,
-							:country => a.country
+							:address => address.address,
+							:zipcode => address.zipcode,
+							:city => address.city,
+							:country => address.country
 						)
 					end
 				end
 
-				xml.contact_methods do
-					for m in p.contact_methods
-						xml.contact_method(
-							:name => m.name,
-							:value => m.value
+				xml.phones do
+					for phone in person.phones
+						xml.phone(
+							:number => phone.number,
+							:type => phone.type
+						)
+					end
+				end
+
+				xml.emails do
+					for email in person.emails
+						xml.email(
+							:address => email.address
+						)
+					end
+				end
+
+				xml.websites do
+					for website in person.websites
+						xml.website(
+							:url => website.url
+						)
+					end
+				end
+
+				xml.twitters do
+					for twitter in person.twitters
+						xml.twitter(
+							:username => twitter.username
+						)
+					end
+				end
+
+				xml.instant_messagings do
+					for im in person.instant_messagings
+						xml.instant_messaging(
+							:account => im.account,
+							:type => im.type
 						)
 					end
 				end

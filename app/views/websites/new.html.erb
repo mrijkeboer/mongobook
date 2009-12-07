@@ -1,0 +1,16 @@
+<h1>Add website</h1>                                          
+
+<% form_for(:website, :url => person_websites_url(@person.id)) do |form| %>
+	<table>
+		<tr>
+			<th><label for="website_url">Website:</label></th>
+			<td><%= form.text_field :url %></td>
+			<td><%= error_message_on :website, :url %></td>
+		</tr>                                   
+
+		<tr>
+			<th>&nbsp;</th>
+			<td><%= submit_tag "Add", :class => "button" %></td>
+		</tr>
+	</table>
+<% end %>

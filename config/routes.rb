@@ -6,7 +6,11 @@ ActionController::Routing::Routes.draw do |map|
 	
 	map.resources :people, :collection => { :search => :post } do |person|
 		person.resources :addresses
-		person.resources :contact_methods
+		person.resources :emails
+		person.resources :instant_messagings
+		person.resources :phones
+		person.resources :twitters
+		person.resources :websites
 	end
 
 	map.resources :users

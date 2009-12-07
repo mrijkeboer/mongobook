@@ -1,0 +1,18 @@
+<h1>Edit twitter</h1>                                          
+
+<% form_for(:twitter, :url => person_twitter_url(@person.id, @twitter), :html => {:method => :put }) do |form| %>
+
+	<table>
+		<tr>
+			<th><label for="twitter_username">Username:</label></th>
+			<td><%= form.text_field :username %></td>
+			<td><%= error_message_on :twitter, :username %></td>
+		</tr>                                   
+
+		<tr>
+			<th>&nbsp;</th>
+			<td><%= submit_tag "Save", :class => "button" %></td>
+		</tr>
+	</table>
+<% end %>
+

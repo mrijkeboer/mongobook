@@ -1,0 +1,22 @@
+<h1>Add instant messaging</h1>                                          
+
+<% form_for(:instant_messaging, :url => person_instant_messagings_url(@person.id)) do |form| %>
+	<table>
+		<tr>
+			<th><label for="instant_messaging_account">Account:</label></th>
+			<td><%= form.text_field :account %></td>
+			<td><%= error_message_on :instant_messaging, :account %></td>
+		</tr>                                   
+
+		<tr>
+			<th><label for="instant_messaging_type">Type:</label></th>
+			<td><%= form.text_field :type %></td>
+			<td><%= error_message_on :instant_messaging, :type %></td>
+		</tr>                                   
+
+		<tr>
+			<th>&nbsp;</th>
+			<td><%= submit_tag "Add", :class => "button" %></td>
+		</tr>
+	</table>
+<% end %>

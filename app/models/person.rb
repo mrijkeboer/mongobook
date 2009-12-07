@@ -2,7 +2,11 @@ class Person
 	include MongoMapper::Document
 
 	many :addresses
-	many :contact_methods
+	many :emails
+	many :instant_messagings
+	many :phones
+	many :twitters
+	many :websites
 
 	key :name, String
 	key :sort_key, String
@@ -67,19 +71,17 @@ class Person
 
 
 	def phone
-		if contact_methods.length > 0
-			for method in contact_methods
-				if method.name.to_s.downcase == 'phone'
-					return method.value
-				end
-			end
-
-			for method in contact_methods
-				if method.name.to_s.downcase == 'mobile'
-					return method.value
-				end
-			end
+		if phones.length > 0
+			return phones[0].number
+		else
 			return ''
+		end
+	end
+
+
+	def email
+		if emails.length > 0
+			return emails[0].address
 		else
 			return ''
 		end
