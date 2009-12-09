@@ -1,0 +1,148 @@
+<p class="edit"><%= link_to 'Edit', edit_contact_url(@contact) -%></p>
+<h1><%= h(@contact.name) -%></h1>                                          
+
+<table class="show">
+	<tr>
+		<th>Sort key</th>
+		<td><%= h(@contact.sort_key) -%></td>
+	</tr>                                   
+	<tr>
+		<th>Created</th>
+		<td><%= @contact.created_at.strftime('%Y-%m-%d') -%></td>
+	</tr>
+
+	<tr>
+		<th>Modified</th>
+		<td><%= @contact.updated_at.strftime('%Y-%m-%d') -%></td>
+	</tr>
+</table>
+
+<hr />
+
+<table class="show">
+	<tr>
+		<th>Address</th>
+		<td>
+			<% counter = 0 %>
+			<% for address in @contact.addresses %>
+				<div>
+					<div class="edit">
+						<%= link_to 'Edit', edit_contact_address_url(@contact.id, address) -%>,
+						<%= link_to 'Delete', contact_address_url(@contact.id, address), :confirm => 'Are you sure?', :method => 'delete' %>
+					</div>
+					<% if address.address.to_s.length > 0 %>
+						<div><%= h(address.address) -%></div>
+					<% end %>
+
+					<% if address.zipcode.to_s.length > 0 %>
+						<div><%= h(address.zipcode) -%> <%= h(address.city) -%></div>
+					<% elsif address.city.to_s.length > 0 %>
+						<div><%= h(address.city) -%></div>
+					<% end %>
+
+					<% if address.country.to_s.length > 0 %>
+						<div><%= h(address.country) -%></div>
+					<% end %>
+				</div>
+
+				<% counter += 1 %>
+				<% if counter < @contact.addresses.length %>
+					<br />
+				<% end %>
+
+			<% end %>
+			<div class="add"><%= link_to 'Add an address', new_contact_address_url(@contact.id) -%></div>
+		</td>
+	</tr>
+</table>
+
+<hr />
+
+<table class="show">
+	<tr>
+		<th>Phone</th>
+		<td>
+			<% for phone in @contact.phones %>
+				<div class="edit">
+					<%= link_to 'Edit', edit_contact_phone_url(@contact.id, phone) -%>,
+					<%= link_to 'Delete', contact_phone_url(@contact.id, phone), :confirm => 'Are you sure?', :method => 'delete' %>
+				</div>
+				<div><%= h(phone.number) -%></div>
+			<% end %>
+			<div class="add"><%= link_to 'Add a phone number', new_contact_phone_url(@contact.id) -%></div>
+		</td>
+	</tr>
+</table>
+
+<hr />
+
+<table class="show">
+	<tr>
+		<th>Email</th>
+		<td>
+			<% for email in @contact.emails %>
+				<div class="edit">
+					<%= link_to 'Edit', edit_contact_email_url(@contact.id, email) -%>,
+					<%= link_to 'Delete', contact_email_url(@contact.id, email), :confirm => 'Are you sure?', :method => 'delete' %>
+				</div>
+				<div><%= h(email.address) -%></div>
+			<% end %>
+			<div class="add"><%= link_to 'Add an email address', new_contact_email_url(@contact.id) -%></div>
+		</td>
+	</tr>
+</table>
+
+<hr />
+
+<table class="show">
+	<tr>
+		<th>Website</th>
+		<td>
+			<% for website in @contact.websites %>
+				<div class="edit">
+					<%= link_to 'Edit', edit_contact_website_url(@contact.id, website) -%>,
+					<%= link_to 'Delete', contact_website_url(@contact.id, website), :confirm => 'Are you sure?', :method => 'delete' %>
+				</div>
+				<div><%= h(website.url) -%></div>
+			<% end %>
+			<div class="add"><%= link_to 'Add a website', new_contact_website_url(@contact.id) -%></div>
+		</td>
+	</tr>
+</table>
+
+<hr />
+
+<table class="show">
+	<tr>
+		<th>Twitter</th>
+		<td>
+			<% for twitter in @contact.twitters %>
+				<div class="edit">
+					<%= link_to 'Edit', edit_contact_twitter_url(@contact.id, twitter) -%>,
+					<%= link_to 'Delete', contact_twitter_url(@contact.id, twitter), :confirm => 'Are you sure?', :method => 'delete' %>
+				</div>
+				<div><%= h(twitter.username) -%></div>
+			<% end %>
+			<div class="add"><%= link_to 'Add a twitter username', new_contact_twitter_url(@contact.id) -%></div>
+		</td>
+	</tr>
+</table>
+
+<hr />
+
+<table class="show">
+	<tr>
+		<th>Im</th>
+		<td>
+			<% for im in @contact.instant_messagings %>
+				<div class="edit">
+					<%= link_to 'Edit', edit_contact_instant_messaging_url(@contact.id, im) -%>,
+					<%= link_to 'Delete', contact_instant_messaging_url(@contact.id, im), :confirm => 'Are you sure?', :method => 'delete' %>
+				</div>
+				<div><%= h(im.account) -%></div>
+			<% end %>
+			<div class="add"><%= link_to 'Add an instant message account', new_contact_instant_messaging_url(@contact.id) -%></div>
+		</td>
+	</tr>
+</table>
+

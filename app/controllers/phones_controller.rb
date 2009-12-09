@@ -1,17 +1,17 @@
 class PhonesController < ApplicationController
 
-	layout "people"
+	layout "contacts"
 
 	before_filter :check_signed_in
-	before_filter :find_person
+	before_filter :find_contact
 
 	def index
-		redirect_to person_url(@person)
+		redirect_to contact_url(@contact)
 	end
 
 
 	def show
-		redirect_to person_url(@person)
+		redirect_to contact_url(@contact)
 	end
 
 
@@ -21,17 +21,17 @@ class PhonesController < ApplicationController
 
 
 	def edit
-		@phone = @person.phones.find(params[:id])
+		@phone = @contact.phones.find(params[:id])
 	end
 
 
 	def create
 		@phone = Phone.new(params[:phone])
-		@person.phones << @phone
+		@contact.phones << @phone
 
-		if @person.save
+		if @contact.save
 			flash[:notice] = 'Phone added.'
-			redirect_to person_url(@person)
+			redirect_to contact_url(@contact)
 		else
 			render :action => :new
 		end
@@ -39,11 +39,11 @@ class PhonesController < ApplicationController
 
 
 	def update
-		@phone = @person.phones.find(params[:id])
+		@phone = @contact.phones.find(params[:id])
 
 		if @phone.update_attributes(params[:phone])
 			flash[:notice] = 'Phone updated.'
-			redirect_to person_url(@person)
+			redirect_to contact_url(@contact)
 		else
 			render :action => :edit
 		end
@@ -51,15 +51,15 @@ class PhonesController < ApplicationController
 
 
 	def destroy
-		@phone = @person.phones.find(params[:id])
+		@phone = @contact.phones.find(params[:id])
 
-		if @person.phones.delete(@phone)
-			if @person.save
+		if @contact.phones.delete(@phone)
+			if @contact.save
 				flash[:notice] = 'Phone deleted.'
 			end
 		end
 
-		redirect_to person_url(@person)
+		redirect_to contact_url(@contact)
 	end
 
 end

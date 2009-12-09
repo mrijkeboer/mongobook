@@ -1,7 +1,7 @@
 class Phone
 	include MongoMapper::EmbeddedDocument
 
-	belongs_to :person
+	belongs_to :contact
 
 	key :number, String
 	key :type, String

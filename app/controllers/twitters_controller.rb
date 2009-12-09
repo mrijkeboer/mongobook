@@ -1,17 +1,17 @@
 class TwittersController < ApplicationController
 
-	layout "people"
+	layout "contacts"
 
 	before_filter :check_signed_in
-	before_filter :find_person
+	before_filter :find_contact
 
 	def index
-		redirect_to person_url(@person)
+		redirect_to contact_url(@contact)
 	end
 
 
 	def show
-		redirect_to person_url(@person)
+		redirect_to contact_url(@contact)
 	end
 
 
@@ -21,17 +21,17 @@ class TwittersController < ApplicationController
 
 
 	def edit
-		@twitter = @person.twitters.find(params[:id])
+		@twitter = @contact.twitters.find(params[:id])
 	end
 
 
 	def create
 		@twitter = Twitter.new(params[:twitter])
-		@person.twitters << @twitter
+		@contact.twitters << @twitter
 
-		if @person.save
+		if @contact.save
 			flash[:notice] = 'Twitter added.'
-			redirect_to person_url(@person)
+			redirect_to contact_url(@contact)
 		else
 			render :action => :new
 		end
@@ -39,11 +39,11 @@ class TwittersController < ApplicationController
 
 
 	def update
-		@twitter = @person.twitters.find(params[:id])
+		@twitter = @contact.twitters.find(params[:id])
 
 		if @twitter.update_attributes(params[:twitter])
 			flash[:notice] = 'Twitter updated.'
-			redirect_to person_url(@person)
+			redirect_to contact_url(@contact)
 		else
 			render :action => :edit
 		end
@@ -51,15 +51,15 @@ class TwittersController < ApplicationController
 
 
 	def destroy
-		@twitter = @person.twitters.find(params[:id])
+		@twitter = @contact.twitters.find(params[:id])
 
-		if @person.twitters.delete(@twitter)
-			if @person.save
+		if @contact.twitters.delete(@twitter)
+			if @contact.save
 				flash[:notice] = 'Twitter deleted.'
 			end
 		end
 
-		redirect_to person_url(@person)
+		redirect_to contact_url(@contact)
 	end
 
 end

@@ -1,9 +1,9 @@
 xml.addressbook do
-	xml.people do
-		for person in @people
-			xml.person(:name => person.name, :sortkey => person.sort_key) do
+	xml.contacts do
+		for contact in @contacts
+			xml.contact(:name => contact.name, :sortkey => contact.sort_key) do
 				xml.addresses do
-					for address in person.addresses
+					for address in contact.addresses
 						xml.address(
 							:address => address.address,
 							:zipcode => address.zipcode,
@@ -14,7 +14,7 @@ xml.addressbook do
 				end
 
 				xml.phones do
-					for phone in person.phones
+					for phone in contact.phones
 						xml.phone(
 							:number => phone.number,
 							:type => phone.type
@@ -23,7 +23,7 @@ xml.addressbook do
 				end
 
 				xml.emails do
-					for email in person.emails
+					for email in contact.emails
 						xml.email(
 							:address => email.address
 						)
@@ -31,7 +31,7 @@ xml.addressbook do
 				end
 
 				xml.websites do
-					for website in person.websites
+					for website in contact.websites
 						xml.website(
 							:url => website.url
 						)
@@ -39,7 +39,7 @@ xml.addressbook do
 				end
 
 				xml.twitters do
-					for twitter in person.twitters
+					for twitter in contact.twitters
 						xml.twitter(
 							:username => twitter.username
 						)
@@ -47,7 +47,7 @@ xml.addressbook do
 				end
 
 				xml.instant_messagings do
-					for im in person.instant_messagings
+					for im in contact.instant_messagings
 						xml.instant_messaging(
 							:account => im.account,
 							:type => im.type

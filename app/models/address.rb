@@ -1,7 +1,7 @@
 class Address
 	include MongoMapper::EmbeddedDocument
 
-	belongs_to :person
+	belongs_to :contact
 
 	key :address, String
 	key :zipcode, String

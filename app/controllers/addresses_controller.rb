@@ -1,17 +1,17 @@
 class AddressesController < ApplicationController
 
-	layout "people"
+	layout "contacts"
 
 	before_filter :check_signed_in
-	before_filter :find_person
+	before_filter :find_contact
 
 	def index
-		redirect_to person_url(@person)
+		redirect_to contact_url(@contact)
 	end
 
 
 	def show
-		redirect_to person_url(@person)
+		redirect_to contact_url(@contact)
 	end
 
 
@@ -21,17 +21,17 @@ class AddressesController < ApplicationController
 
 
 	def edit
-		@address = @person.addresses.find(params[:id])
+		@address = @contact.addresses.find(params[:id])
 	end
 
 
 	def create
 		@address = Address.new(params[:address])
-		@person.addresses << @address
+		@contact.addresses << @address
 
-		if @person.save
+		if @contact.save
 			flash[:notice] = 'Address added.'
-			redirect_to person_url(@person)
+			redirect_to contact_url(@contact)
 		else
 			render :action => :new
 		end
@@ -39,11 +39,11 @@ class AddressesController < ApplicationController
 
 
 	def update
-		@address = @person.addresses.find(params[:id])
+		@address = @contact.addresses.find(params[:id])
 
 		if @address.update_attributes(params[:address])
 			flash[:notice] = 'Address updated.'
-			redirect_to person_url(@person)
+			redirect_to contact_url(@contact)
 		else
 			render :action => :edit
 		end
@@ -51,15 +51,15 @@ class AddressesController < ApplicationController
 
 
 	def destroy
-		@address = @person.addresses.find(params[:id])
+		@address = @contact.addresses.find(params[:id])
 
-		if @person.addresses.delete(@address)
-			if @person.save
+		if @contact.addresses.delete(@address)
+			if @contact.save
 				flash[:notice] = 'Address deleted.'
 			end
 		end
 
-		redirect_to person_url(@person)
+		redirect_to contact_url(@contact)
 	end
 
 end

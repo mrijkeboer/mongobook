@@ -1,17 +1,17 @@
 class WebsitesController < ApplicationController
 
-	layout "people"
+	layout "contacts"
 
 	before_filter :check_signed_in
-	before_filter :find_person
+	before_filter :find_contact
 
 	def index
-		redirect_to person_url(@person)
+		redirect_to contact_url(@contact)
 	end
 
 
 	def show
-		redirect_to person_url(@person)
+		redirect_to contact_url(@contact)
 	end
 
 
@@ -21,17 +21,17 @@ class WebsitesController < ApplicationController
 
 
 	def edit
-		@website = @person.websites.find(params[:id])
+		@website = @contact.websites.find(params[:id])
 	end
 
 
 	def create
 		@website = Website.new(params[:website])
-		@person.websites << @website
+		@contact.websites << @website
 
-		if @person.save
+		if @contact.save
 			flash[:notice] = 'Website added.'
-			redirect_to person_url(@person)
+			redirect_to contact_url(@contact)
 		else
 			render :action => :new
 		end
@@ -39,11 +39,11 @@ class WebsitesController < ApplicationController
 
 
 	def update
-		@website = @person.websites.find(params[:id])
+		@website = @contact.websites.find(params[:id])
 
 		if @website.update_attributes(params[:webiste])
 			flash[:notice] = 'Website updated.'
-			redirect_to person_url(@person)
+			redirect_to contact_url(@contact)
 		else
 			render :action => :edit
 		end
@@ -51,15 +51,15 @@ class WebsitesController < ApplicationController
 
 
 	def destroy
-		@website = @person.websites.find(params[:id])
+		@website = @contact.websites.find(params[:id])
 
-		if @person.websites.delete(@website)
-			if @person.save
+		if @contact.websites.delete(@website)
+			if @contact.save
 				flash[:notice] = 'website deleted.'
 			end
 		end
 
-		redirect_to person_url(@person)
+		redirect_to contact_url(@contact)
 	end
 
 end

@@ -1,7 +1,7 @@
 class InstantMessaging
 	include MongoMapper::EmbeddedDocument
 
-	belongs_to :person
+	belongs_to :contact
 
 	key :account, String
 	key :type, String

@@ -1,7 +1,7 @@
 class Website
 	include MongoMapper::EmbeddedDocument
 
-	belongs_to :person
+	belongs_to :contact
 
 	key :url, String
 

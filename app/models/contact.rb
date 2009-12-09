@@ -1,4 +1,4 @@
-class Person
+class Contact
 	include MongoMapper::Document
 
 	many :addresses

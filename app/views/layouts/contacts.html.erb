@@ -12,14 +12,14 @@
 			<div id="header">
 
 				<div id="search">
-					<% form_tag '/people/search' do %>
+					<% form_tag '/contacts/search' do %>
 						<%= text_field_tag :search_key, params[:search_key], :class => 'searchtext'-%>
 						<%= submit_tag "Search" -%>
 					<% end %>
 				</div>
 				<h1>Simple Addressbook</h1>	
 				<div id="navbar">
-					<%= link_to 'Home', people_url -%>
+					<%= link_to 'Home', contacts_url -%>
 					<%= link_to 'Users', users_url -%>
 					<%= link_to 'Export', export_url -%>
 				</div>

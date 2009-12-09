@@ -4,7 +4,7 @@ module AddressFactory
 
 		def client.address_attributes
 			{
-				:person_id => Factory.person!.id,
+				:contact_id => Factory.contact!.id,
 				:address => 'Teststreet 1',
 				:zipcode => '1234 AB',
 				:city => 'Foobar',

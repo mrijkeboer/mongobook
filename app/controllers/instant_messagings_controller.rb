@@ -1,17 +1,17 @@
 class InstantMessagingsController < ApplicationController
 
-	layout "people"
+	layout "contacts"
 
 	before_filter :check_signed_in
-	before_filter :find_person
+	before_filter :find_contact
 
 	def index
-		redirect_to person_url(@person)
+		redirect_to contact_url(@contact)
 	end
 
 
 	def show
-		redirect_to person_url(@person)
+		redirect_to contact_url(@contact)
 	end
 
 
@@ -21,17 +21,17 @@ class InstantMessagingsController < ApplicationController
 
 
 	def edit
-		@instant_messaging = @person.instant_messagings.find(params[:id])
+		@instant_messaging = @contact.instant_messagings.find(params[:id])
 	end
 
 
 	def create
 		@instant_messaging = InstantMessaging.new(params[:instant_messaging])
-		@person.instant_messagings << @instant_messaging
+		@contact.instant_messagings << @instant_messaging
 
-		if @person.save
+		if @contact.save
 			flash[:notice] = 'Instant messaging added.'
-			redirect_to person_url(@person)
+			redirect_to contact_url(@contact)
 		else
 			render :action => :new
 		end
@@ -39,11 +39,11 @@ class InstantMessagingsController < ApplicationController
 
 
 	def update
-		@instant_messaging = @person.instant_messagings.find(params[:id])
+		@instant_messaging = @contact.instant_messagings.find(params[:id])
 
 		if @instant_messaging.update_attributes(params[:instant_messaging])
 			flash[:notice] = 'Instant messaging updated.'
-			redirect_to person_url(@person)
+			redirect_to contact_url(@contact)
 		else
 			render :action => :edit
 		end
@@ -51,15 +51,15 @@ class InstantMessagingsController < ApplicationController
 
 
 	def destroy
-		@instant_messaging = @person.instant_messagings.find(params[:id])
+		@instant_messaging = @contact.instant_messagings.find(params[:id])
 
-		if @person.instant_messagings.delete(@instant_messaging)
-			if @person.save
+		if @contact.instant_messagings.delete(@instant_messaging)
+			if @contact.save
 				flash[:notice] = 'Instant messaging deleted.'
 			end
 		end
 
-		redirect_to person_url(@person)
+		redirect_to contact_url(@contact)
 	end
 
 end

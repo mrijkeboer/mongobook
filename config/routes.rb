@@ -4,13 +4,13 @@ ActionController::Routing::Routes.draw do |map|
 	map.sign_in 'welcome/sign_in', :controller => 'welcome', :action => 'sign_in'
 	map.sign_out 'welcome/sign_out', :controller => 'welcome', :action => 'sign_out'
 	
-	map.resources :people, :collection => { :search => :post } do |person|
-		person.resources :addresses
-		person.resources :emails
-		person.resources :instant_messagings
-		person.resources :phones
-		person.resources :twitters
-		person.resources :websites
+	map.resources :contacts, :collection => { :search => :post } do |contact|
+		contact.resources :addresses
+		contact.resources :emails
+		contact.resources :instant_messagings
+		contact.resources :phones
+		contact.resources :twitters
+		contact.resources :websites
 	end
 
 	map.resources :users

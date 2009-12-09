@@ -1,17 +1,17 @@
 class EmailsController < ApplicationController
 
-	layout "people"
+	layout "contacts"
 
 	before_filter :check_signed_in
-	before_filter :find_person
+	before_filter :find_contact
 
 	def index
-		redirect_to person_url(@person)
+		redirect_to contact_url(@contact)
 	end
 
 
 	def show
-		redirect_to person_url(@person)
+		redirect_to contact_url(@contact)
 	end
 
 
@@ -21,17 +21,17 @@ class EmailsController < ApplicationController
 
 
 	def edit
-		@email = @person.emails.find(params[:id])
+		@email = @contact.emails.find(params[:id])
 	end
 
 
 	def create
 		@email = Email.new(params[:email])
-		@person.emails << @email
+		@contact.emails << @email
 
-		if @person.save
+		if @contact.save
 			flash[:notice] = 'Email added.'
-			redirect_to person_url(@person)
+			redirect_to contact_url(@contact)
 		else
 			render :action => :new
 		end
@@ -39,11 +39,11 @@ class EmailsController < ApplicationController
 
 
 	def update
-		@email = @person.emails.find(params[:id])
+		@email = @contact.emails.find(params[:id])
 
 		if @email.update_attributes(params[:email])
 			flash[:notice] = 'Email updated.'
-			redirect_to person_url(@person)
+			redirect_to contact_url(@contact)
 		else
 			render :action => :edit
 		end
@@ -51,15 +51,15 @@ class EmailsController < ApplicationController
 
 
 	def destroy
-		@email = @person.emails.find(params[:id])
+		@email = @contact.emails.find(params[:id])
 
-		if @person.emails.delete(@email)
-			if @person.save
+		if @contact.emails.delete(@email)
+			if @contact.save
 				flash[:notice] = 'Email deleted.'
 			end
 		end
 
-		redirect_to person_url(@person)
+		redirect_to contact_url(@contact)
 	end
 
 end

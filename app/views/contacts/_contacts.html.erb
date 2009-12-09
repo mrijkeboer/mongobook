@@ -1,0 +1,33 @@
+<% for contact in @contacts %>
+	<tr>
+		<td>
+			<%= link_to h(contact.name), contact_url(contact) %>
+		</td>
+
+		<td>
+			<% if contact.address.to_s.length > 0 %>
+				<%= h(contact.address) -%><br />
+			<% end %>
+
+			<% if contact.zipcode.to_s.length > 0 %>
+				<%= h(contact.zipcode) + ' ' + h(contact.city) -%><br />
+			<% elsif contact.city.to_s.length > 0 %>
+				<%= h(contact.city) -%><br />
+			<% end %>
+
+			<% if contact.country.to_s.length > 0 %>
+				<%= h(contact.country) -%><br />
+			<% end %>
+
+			<% if contact.phone.to_s.length > 0 %>
+				<%= h(contact.phone) -%><br />
+			<% end %>
+
+			<%= link_to 'more &raquo;', contact_url(contact) %>
+		</td>
+
+		<td>
+			<%= link_to 'delete', contact_url(contact), :method  => :delete %>
+		</td>
+	</tr>
+<% end %>

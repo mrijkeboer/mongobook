@@ -13,7 +13,7 @@ class WelcomeController < ApplicationController
 		if request.post?
 			@user = User.sign_in(params[:username], params[:password])
 			if @user != nil
-				uri = session[:orig_uri] || people_url
+				uri = session[:orig_uri] || contacts_url
 
 				session[:user_id] = @user.id
 				session[:orig_uri] = nil

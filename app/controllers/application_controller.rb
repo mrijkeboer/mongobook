@@ -22,13 +22,13 @@ class ApplicationController < ActionController::Base
 	end
 
 
- 	def find_person
-		person_id = params[:person_id]
+ 	def find_contact
+		contact_id = params[:contact_id]
 
-		if person_id == nil
-			redirect_to people_url
+		if contact_id == nil
+			redirect_to contacts_url
 		else
-			@person = Person.find(person_id)
+			@contact = Contact.find(contact_id)
 		end
 	end
 
