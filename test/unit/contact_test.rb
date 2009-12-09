@@ -31,14 +31,6 @@ class ContactTest < ActiveSupport::TestCase
 	end
 
 
-	test "validate uniqueness of name" do
-		contact1 = Factory.contact!
-		contact2 = Factory.contact
-		assert !contact2.valid?
-		assert contact2.errors.invalid?(:name)
-	end
-
-
 	#
 	# sort_key
 	#

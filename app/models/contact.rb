@@ -14,7 +14,6 @@ class Contact
 
 	validates_presence_of :name
 	validates_length_of :name, :within => 1..250
-	validates_uniqueness_of :name
 	validates_length_of :sort_key, :within => 0..250, :allow_nil => true
 	validates_length_of :search_key, :within => 0..250, :allow_nil => true
 
