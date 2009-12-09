@@ -1,7 +1,7 @@
 <h1>Add email</h1>                                          
 
 <% form_for(:email, :url => contact_emails_url(@contact.id)) do |form| %>
-	<table>
+	<table class="edit">
 		<tr>
 			<th><label for="email_address">Address:</label></th>
 			<td><%= form.text_field :address %></td>

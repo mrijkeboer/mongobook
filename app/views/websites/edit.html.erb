@@ -2,7 +2,7 @@
 
 <% form_for(:website, :url => contact_website_url(@contact.id, @website), :html => {:method => :put }) do |form| %>
 
-	<table>
+	<table class="edit">
 		<tr>
 			<th><label for="website_url">Website:</label></th>
 			<td><%= form.text_field :url %></td>

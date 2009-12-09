@@ -2,7 +2,7 @@
 
 <% form_for(:phone, :url => contact_phone_url(@contact.id, @phone), :html => {:method => :put }) do |form| %>
 
-	<table>
+	<table class="edit">
 		<tr>
 			<th><label for="phone_number">Number:</label></th>
 			<td><%= form.text_field :number %></td>

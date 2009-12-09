@@ -14,7 +14,7 @@ body {
 
 #header {
 	background-color: #464445;
-	height: 4em;
+	height: 4.5em;
 	padding-top: 0.5em;
 	padding-left: 1em;
 	padding-right: 1em;
@@ -35,6 +35,19 @@ body {
 	border: 1px solid #000000;
 }
 
+#navbar {
+	float: right;
+	color: #c0c0c0;
+}
+
+#navbar a {
+	color: #ff8800;
+}
+
+#navbar a:visited {
+	color: #ff8800;
+}
+
 #content {
 	background-color: #ffffff;
 	margin-top: 0em;
@@ -42,6 +55,7 @@ body {
 	padding-left: 1em;
 	padding-right: 1em;
 	padding-bottom: 1em;
+	min-height: 22em;
 }
 
 #content h1{
@@ -57,23 +71,35 @@ body {
 	color: #ff8800;
 }
 
-#navbar {
-	float: right;
-}
-
-#content .add {
+#content div.add {
 	font-size: 90%;
 }
 
-#content .edit {
+#content div.edit {
 	float: right;
 	margin: 0px;
 	padding: 0px;
 	font-size: 90%;
 }
 
-.show th {
-	text-align: right;
+#content div.formError {
+	color: #ff0000;
+}
+
+#content table.edit th {
+	text-align: left;
+	vertical-align: top;
+	width: 6em;
+}
+
+#content table.show {
+	width: 100%;
+}
+
+#content table.show th {
+	text-align: left;
+	vertical-align: top;
+	font-size: 90%;
 	width: 6em;
 }
 

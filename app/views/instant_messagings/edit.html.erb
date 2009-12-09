@@ -2,7 +2,7 @@
 
 <% form_for(:instant_messaging, :url => contact_instant_messaging_url(@contact.id, @instant_messaging), :html => {:method => :put }) do |form| %>
 
-	<table>
+	<table class="edit">
 		<tr>
 			<th><label for="instant_messaging_account">Account:</label></th>
 			<td><%= form.text_field :account %></td>

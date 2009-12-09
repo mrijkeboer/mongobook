@@ -1,7 +1,7 @@
 <h1>Add instant messaging</h1>                                          
 
 <% form_for(:instant_messaging, :url => contact_instant_messagings_url(@contact.id)) do |form| %>
-	<table>
+	<table class="edit">
 		<tr>
 			<th><label for="instant_messaging_account">Account:</label></th>
 			<td><%= form.text_field :account %></td>

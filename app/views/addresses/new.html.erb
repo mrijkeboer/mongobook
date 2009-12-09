@@ -2,7 +2,7 @@
 
 <% form_for(:address, :url => contact_addresses_url(@contact.id)) do |form| %>
 
-	<table>
+	<table class="edit">
 		<tr>
 			<th><label for="address_address">Address:</label></th>
 			<td><%= form.text_field :address %></td>

@@ -1,7 +1,7 @@
 <h1>Edit user</h1>
 <% form_for(:user, :url => user_url(@user), :html => { :method => :put }) do |form| %>
 
-	<table>
+	<table class="edit">
 		<tr>
 			<th><label for="user_username">Username:</label></th>
 			<td><%= form.text_field :username, :disabled => "disabled" %></td>

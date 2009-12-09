@@ -1,7 +1,8 @@
 <h1>Add website</h1>                                          
 
 <% form_for(:website, :url => contact_websites_url(@contact.id)) do |form| %>
-	<table>
+
+	<table class="edit">
 		<tr>
 			<th><label for="website_url">Website:</label></th>
 			<td><%= form.text_field :url %></td>

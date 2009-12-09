@@ -1,7 +1,7 @@
 <h1>Add phone</h1>                                          
 
 <% form_for(:phone, :url => contact_phones_url(@contact.id)) do |form| %>
-	<table>
+	<table class="edit">
 		<tr>
 			<th><label for="phone_number">Number:</label></th>
 			<td><%= form.text_field :number %></td>
