@@ -2,6 +2,7 @@ body {
 	color: #464445;
 	background-color: #888888;
 	margin-top: 0;
+	font-size: 100%;
 }
 
 #container {
@@ -14,7 +15,7 @@ body {
 
 #header {
 	background-color: #464445;
-	height: 4.5em;
+	min-height: 4.5em;
 	padding-top: 0.5em;
 	padding-left: 1em;
 	padding-right: 1em;
@@ -82,13 +83,18 @@ body {
 	font-size: 90%;
 }
 
+#content div.delete {
+	float: right;
+	font-size: 90%;
+}
+
 #content div.formError {
 	color: #ff0000;
 }
 
 #content table.edit th {
 	text-align: left;
-	vertical-align: top;
+	vertical-align: baseline;
 	width: 6em;
 }
 
@@ -98,13 +104,65 @@ body {
 
 #content table.show th {
 	text-align: left;
-	vertical-align: top;
+	vertical-align: baseline;
 	font-size: 90%;
 	width: 6em;
 }
 
+#content table#listing {
+	width: 100%;
+	border-collapse: collapse;
+	border-top: 1px solid #dddddd;
+}
+
 #listing td {
-	vertical-align: top;
+	vertical-align: baseline;
+	border-bottom: 1px solid #dddddd;
+	padding-top: 4px;
+}
+
+#listing h1.contact_name {
+	font-size: 1.375em;
+	font-weight: 500;
+	margin: 0;
+	padding: 0;
+}
+
+#listing h1.contact_name a, #listing h1.contact_name a:visited {
+	text-decoration: none;
+	color: #464445;
+}
+
+#listing h1.contact_name a:hover {
+	text-decoration: underline;
+}
+
+#listing p.contact_method {
+	font-size: 0.875em;
+	margin: 0;
+	padding: 0;
+}
+
+#listing p.contact_method a, #listing p.contact_method a:visited {
+	text-decoration: none;
+	color: #464445;
+}
+
+#listing p.contact_method a:hover {
+	text-decoration: underline;
+}
+
+#listing p.contact_address {
+	font-size: 0.875em;
+	margin: 0;
+	padding: 0;
+}
+
+#listing p.contact_action {
+	text-align: right;
+	font-size: 0.875em;
+	margin: 0;
+	padding: 0;
 }
 
 #footer {

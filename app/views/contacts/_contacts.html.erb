@@ -1,33 +1,51 @@
 <% for contact in @contacts %>
 	<tr>
 		<td>
-			<%= link_to h(contact.name), contact_url(contact) %>
+			<h1 class="contact_name"><%= link_to h(contact.name), contact_url(contact) -%></h1>
+
+			<% for email in contact.emails %>
+				<p class="contact_method"><a href="mailto:<%= h(email.address) -%>"><%= h(email.address) -%></a></p>
+			<% end %>
+
+			<% for phone in contact.phones %>
+				<p class="contact_method"><%= h(phone.number) -%> (<%= h(phone.type) -%>)</p>
+			<% end %>
 		</td>
 
 		<td>
+			<% address = '' %>
+
 			<% if contact.address.to_s.length > 0 %>
-				<%= h(contact.address) -%><br />
+				<% address = contact.address %>
 			<% end %>
 
-			<% if contact.zipcode.to_s.length > 0 %>
-				<%= h(contact.zipcode) + ' ' + h(contact.city) -%><br />
-			<% elsif contact.city.to_s.length > 0 %>
-				<%= h(contact.city) -%><br />
+			<% if contact.city.to_s.length > 0 %>
+				<% if address.to_s.length > 0 %>
+					<% address += ', ' + contact.city %>
+				<% else %>
+					<% address = contact.city %>
+				<% end %>
 			<% end %>
 
 			<% if contact.country.to_s.length > 0 %>
-				<%= h(contact.country) -%><br />
+				<% if address.to_s.length > 0 %>
+					<% address += ', ' + contact.country %>
+				<% else %>
+					<% address = contact.country %>
+				<% end %>
 			<% end %>
 
-			<% if contact.phone.to_s.length > 0 %>
-				<%= h(contact.phone) -%><br />
-			<% end %>
-
-			<%= link_to 'more &raquo;', contact_url(contact) %>
+			<p class="contact_address"><%= h(address) %></p>
 		</td>
 
 		<td>
-			<%= link_to 'delete', contact_url(contact), :method  => :delete %>
+			<p class="contact_action">
+			<%= link_to 'Details', contact_url(contact) %>,
+			<%= link_to 'Delete', contact_url(contact), :method  => :delete %>
+			</p>
 		</td>
 	</tr>
+
+
 <% end %>
+
