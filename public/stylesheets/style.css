@@ -24,7 +24,7 @@ body {
 #header h1 {
 	margin: 0;
 	color: #ff8800;
-	font-size: 250%;
+	font-size: 2.5em;
 }
 
 #search {
@@ -59,33 +59,36 @@ body {
 	min-height: 22em;
 }
 
-#content h1{
+#content h1 {
 	margin-top: 0;
 	margin-bottom: 0.2em;
 }
 
-#content a {
+#content a, a:visited {
 	color: #ff8800;
 }
 
-#content a:visited {
-	color: #ff8800;
+#content hr {
+	color: #dddddd;
+	background-color: #dddddd;
+	height: 1px;
+	border: 0;
 }
 
 #content div.add {
-	font-size: 90%;
+	font-size: 0.875em;
 }
 
 #content div.edit {
-	float: right;
-	margin: 0px;
-	padding: 0px;
-	font-size: 90%;
+	font-size: 0.875em;
+	text-align: right;
+	margin: 0;
+	padding: 0;
 }
 
 #content div.delete {
-	float: right;
-	font-size: 90%;
+	font-size: 0.875em;
+	text-align: right;
 }
 
 #content div.formError {
@@ -93,20 +96,30 @@ body {
 }
 
 #content table.edit th {
+	font-size: 0.875em;
 	text-align: left;
 	vertical-align: baseline;
 	width: 6em;
 }
 
+#content table.edit td {
+	vertical-align: baseline;
+}
+
 #content table.show {
 	width: 100%;
+	border-collapse: collapse;
 }
 
 #content table.show th {
 	text-align: left;
 	vertical-align: baseline;
-	font-size: 90%;
+	font-size: 0.875em;
 	width: 6em;
+}
+
+#content table.show td {
+	vertical-align: baseline;
 }
 
 #content table#listing {

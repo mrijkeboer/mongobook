@@ -1,7 +1,12 @@
-<div class="edit"><%= link_to 'Edit', edit_contact_url(@contact) -%></div>
-<h1><%= h(@contact.name) -%></h1>                                          
-
 <table class="show">
+	<tr>
+		<td colspan="2">
+			<h1><%= h(@contact.name) -%></h1>                                          
+		</td>
+		<td>
+			<div class="edit"><%= link_to 'Edit', edit_contact_url(@contact) -%></div>
+		</td>
+	</tr>
 	<tr>
 		<th>Sort key</th>
 		<td><%= h(@contact.sort_key) -%></td>
@@ -20,37 +25,48 @@
 <hr />
 
 <table class="show">
-	<tr>
-		<th>Address</th>
-		<td>
-			<% counter = 0 %>
-			<% for address in @contact.addresses %>
-				<div>
-					<div class="edit">
-						<%= link_to 'Edit', edit_contact_address_url(@contact.id, address) -%>,
-						<%= link_to 'Delete', contact_address_url(@contact.id, address), :confirm => 'Are you sure?', :method => 'delete' %>
-					</div>
-					<% if address.address.to_s.length > 0 %>
-						<div><%= h(address.address) -%></div>
-					<% end %>
+	<% counter = 0 %>
+	<% for address in @contact.addresses %>
+		<tr>
+			<% if counter == 0 %>
+				<th>Address</th>
+			<% else %>
+				<th>&nbsp;</th>
+			<% end %>
 
-					<% if address.zipcode.to_s.length > 0 %>
-						<div><%= h(address.zipcode) -%> <%= h(address.city) -%></div>
-					<% elsif address.city.to_s.length > 0 %>
-						<div><%= h(address.city) -%></div>
-					<% end %>
+			<td>
+				<% if address.address.to_s.length > 0 %>
+					<div><%= h(address.address) -%></div>
+				<% end %>
 
-					<% if address.country.to_s.length > 0 %>
-						<div><%= h(address.country) -%></div>
-					<% end %>
-				</div>
+				<% if address.zipcode.to_s.length > 0 %>
+					<div><%= h(address.zipcode) -%> <%= h(address.city) -%></div>
+				<% elsif address.city.to_s.length > 0 %>
+					<div><%= h(address.city) -%></div>
+				<% end %>
+
+				<% if address.country.to_s.length > 0 %>
+					<div><%= h(address.country) -%></div>
+				<% end %>
 
 				<% counter += 1 %>
 				<% if counter < @contact.addresses.length %>
 					<br />
 				<% end %>
+			</td>
 
-			<% end %>
+			<td>
+				<div class="edit">
+					<%= link_to 'Edit', edit_contact_address_url(@contact.id, address) -%>,
+					<%= link_to 'Delete', contact_address_url(@contact.id, address), :confirm => 'Are you sure?', :method => 'delete' %>
+				</div>
+			</td>
+
+		</tr>
+	<% end %>
+	<tr>
+		<th>&nbsp;</th>
+		<td>
 			<div class="add"><%= link_to 'Add an address', new_contact_address_url(@contact.id) -%></div>
 		</td>
 	</tr>
@@ -59,16 +75,30 @@
 <hr />
 
 <table class="show">
-	<tr>
-		<th>Phone</th>
-		<td>
-			<% for phone in @contact.phones %>
+	<% counter = 0 %>
+	<% for phone in @contact.phones %>
+		<tr>
+			<% if counter == 0 %>
+				<th>Phone</th>
+			<% else %>
+				<th>&nbsp;</th>
+			<% end %>
+
+			<td>
+				<div><%= h(phone.number) -%> (<%= h(phone.type) -%>)</div>
+			</td>
+
+			<td>
 				<div class="edit">
 					<%= link_to 'Edit', edit_contact_phone_url(@contact.id, phone) -%>,
 					<%= link_to 'Delete', contact_phone_url(@contact.id, phone), :confirm => 'Are you sure?', :method => 'delete' %>
 				</div>
-				<div><%= h(phone.number) -%></div>
-			<% end %>
+			</td>
+		</tr>
+	<% end %>
+	<tr>
+		<th>&nbsp;</th>
+		<td>
 			<div class="add"><%= link_to 'Add a phone number', new_contact_phone_url(@contact.id) -%></div>
 		</td>
 	</tr>
@@ -77,16 +107,30 @@
 <hr />
 
 <table class="show">
-	<tr>
-		<th>Email</th>
-		<td>
-			<% for email in @contact.emails %>
+	<% counter = 0 %>
+	<% for email in @contact.emails %>
+		<tr>
+			<% if counter == 0 %>
+				<th>Email</th>
+			<% else %>
+				<th>&nbsp;</th>
+			<% end %>
+
+			<td>
+				<div><%= h(email.address) -%></div>
+			</td>
+
+			<td>
 				<div class="edit">
 					<%= link_to 'Edit', edit_contact_email_url(@contact.id, email) -%>,
 					<%= link_to 'Delete', contact_email_url(@contact.id, email), :confirm => 'Are you sure?', :method => 'delete' %>
 				</div>
-				<div><%= h(email.address) -%></div>
-			<% end %>
+			</td>
+		</tr>
+	<% end %>
+	<tr>
+		<th>&nbsp;</th>
+		<td>
 			<div class="add"><%= link_to 'Add an email address', new_contact_email_url(@contact.id) -%></div>
 		</td>
 	</tr>
@@ -95,16 +139,30 @@
 <hr />
 
 <table class="show">
-	<tr>
-		<th>Website</th>
-		<td>
-			<% for website in @contact.websites %>
+	<% counter = 0 %>
+	<% for website in @contact.websites %>
+		<tr>
+			<% if counter == 0 %>
+				<th>Website</th>
+			<% else %>
+				<th>&nbsp;</th>
+			<% end %>
+
+			<td>
+				<div><%= h(website.url) -%></div>
+			</td>
+
+			<td>
 				<div class="edit">
 					<%= link_to 'Edit', edit_contact_website_url(@contact.id, website) -%>,
 					<%= link_to 'Delete', contact_website_url(@contact.id, website), :confirm => 'Are you sure?', :method => 'delete' %>
 				</div>
-				<div><%= h(website.url) -%></div>
-			<% end %>
+			</td>
+		</tr>
+	<% end %>
+	<tr>
+		<th>&nbsp;</th>
+		<td>
 			<div class="add"><%= link_to 'Add a website', new_contact_website_url(@contact.id) -%></div>
 		</td>
 	</tr>
@@ -113,16 +171,30 @@
 <hr />
 
 <table class="show">
-	<tr>
-		<th>Twitter</th>
-		<td>
-			<% for twitter in @contact.twitters %>
+	<% counter = 0 %>
+	<% for twitter in @contact.twitters %>
+		<tr>
+			<% if counter == 0 %>
+				<th>Twitter</th>
+			<% else %>
+				<th>&nbsp;</th>
+			<% end %>
+
+			<td>
+				<div><%= h(twitter.username) -%></div>
+			</td>
+
+			<td>
 				<div class="edit">
 					<%= link_to 'Edit', edit_contact_twitter_url(@contact.id, twitter) -%>,
 					<%= link_to 'Delete', contact_twitter_url(@contact.id, twitter), :confirm => 'Are you sure?', :method => 'delete' %>
 				</div>
-				<div><%= h(twitter.username) -%></div>
-			<% end %>
+			</td>
+		</tr>
+	<% end %>
+	<tr>
+		<th>&nbsp;</th>
+		<td>
 			<div class="add"><%= link_to 'Add a twitter username', new_contact_twitter_url(@contact.id) -%></div>
 		</td>
 	</tr>
@@ -131,18 +203,31 @@
 <hr />
 
 <table class="show">
-	<tr>
-		<th>Im</th>
-		<td>
-			<% for im in @contact.instant_messagings %>
+	<% counter = 0 %>
+	<% for im in @contact.instant_messagings %>
+		<tr>
+			<% if counter == 0 %>
+				<th>Im</th>
+			<% else %>
+				<th>&nbsp;</th>
+			<% end %>
+
+			<td>
+				<div><%= h(im.account) -%> (<%= h(im.type) -%>)</div>
+			</td>
+
+			<td>
 				<div class="edit">
 					<%= link_to 'Edit', edit_contact_instant_messaging_url(@contact.id, im) -%>,
 					<%= link_to 'Delete', contact_instant_messaging_url(@contact.id, im), :confirm => 'Are you sure?', :method => 'delete' %>
 				</div>
-				<div><%= h(im.account) -%></div>
-			<% end %>
+			</td>
+		</tr>
+	<% end %>
+	<tr>
+		<th>&nbsp;</th>
+		<td>
 			<div class="add"><%= link_to 'Add an instant message account', new_contact_instant_messaging_url(@contact.id) -%></div>
 		</td>
 	</tr>
 </table>
-
