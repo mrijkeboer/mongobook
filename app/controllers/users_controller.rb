@@ -1,9 +1,11 @@
 class UsersController < ApplicationController
 
-	if User.count > 0
-		before_filter :check_signed_in
-	else
-		before_filter :check_signed_in, :except => [:new, :create]
+	before_filter do |controller|
+		if User.count > 0
+			before_filter :check_signed_in
+		else
+			before_filter :check_signed_in, :except => [:new, :create]
+		end
 	end
 
 
@@ -60,5 +62,6 @@ class UsersController < ApplicationController
 
 		redirect_to users_url
 	end
+
 
 end

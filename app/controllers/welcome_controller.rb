@@ -1,10 +1,7 @@
 class WelcomeController < ApplicationController
 
-	if User.count > 0
-		before_filter :check_signed_in, :except => :sign_in
-	else
-		before_filter :check_signed_in
-	end
+	before_filter :check_user_count
+	before_filter :check_signed_in, :except => :sign_in
 
 
 	def sign_in
