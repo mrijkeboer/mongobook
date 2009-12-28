@@ -4,7 +4,6 @@ module AddressFactory
 
 		def client.address_attributes
 			{
-				:contact_id => Factory.contact!.id,
 				:address => 'Teststreet 1',
 				:zipcode => '1234 AB',
 				:city => 'Foobar',
@@ -14,7 +13,10 @@ module AddressFactory
 
 
 		def client.address(params = {})
-			return Address.new(Factory.address_attributes.merge(params))
+			address = Address.new(Factory.address_attributes.merge(params))
+			contact = Factory.contact
+			contact.addresses << address
+			address
 		end
 
 

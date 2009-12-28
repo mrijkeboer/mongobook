@@ -4,14 +4,16 @@ module WebsiteFactory
 
 		def client.website_attributes
 			{
-				:contact_id => Factory.contact!.id,
 				:url => 'www.example.com'
 			}
 		end
 
 
 		def client.website(params = {})
-			return Website.new(Factory.website_attributes.merge(params))
+			website = Website.new(Factory.website_attributes.merge(params))
+			contact = Factory.contact
+			contact.websites << website
+			website
 		end
 
 

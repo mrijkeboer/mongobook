@@ -4,14 +4,16 @@ module TwitterFactory
 
 		def client.twitter_attributes
 			{
-				:contact_id => Factory.contact!.id,
 				:username => 'foobar'
 			}
 		end
 
 
 		def client.twitter(params = {})
-			return Twitter.new(Factory.twitter_attributes.merge(params))
+			twitter = Twitter.new(Factory.twitter_attributes.merge(params))
+			contact = Factory.contact
+			contact.twitters << twitter
+			twitter
 		end
 
 

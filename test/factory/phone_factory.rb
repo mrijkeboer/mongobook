@@ -4,7 +4,6 @@ module PhoneFactory
 
 		def client.phone_attributes
 			{
-				:contact_id => Factory.contact!.id,
 				:number => '0123-456789',
 				:type => 'Mobile'
 			}
@@ -12,7 +11,10 @@ module PhoneFactory
 
 
 		def client.phone(params = {})
-			return Phone.new(Factory.phone_attributes.merge(params))
+			phone = Phone.new(Factory.phone_attributes.merge(params))
+			contact = Factory.contact
+			contact.phones << phone
+			phone
 		end
 
 

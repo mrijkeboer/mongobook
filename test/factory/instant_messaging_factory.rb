@@ -4,7 +4,6 @@ module InstantMessagingFactory
 
 		def client.instant_messaging_attributes
 			{
-				:contact_id => Factory.contact!.id,
 				:account => 'test@hotmail.com',
 				:type => 'MSN'
 			}
@@ -12,7 +11,10 @@ module InstantMessagingFactory
 
 
 		def client.instant_messaging(params = {})
-			return InstantMessaging.new(Factory.instant_messaging_attributes.merge(params))
+			im = InstantMessaging.new(Factory.instant_messaging_attributes.merge(params))
+			contact = Factory.contact
+			contact.instant_messagings << im
+			im
 		end
 
 
