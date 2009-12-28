@@ -7,4 +7,8 @@ class Email
 
 	validates_length_of :address, :within => 1..250
 
+	def contact
+		return self._root_document
+	end
+
 end

@@ -1,8 +1,6 @@
 class Address
 	include MongoMapper::EmbeddedDocument
 
-	belongs_to :contact
-
 	key :address, String
 	key :zipcode, String
 	key :city, String
@@ -12,5 +10,10 @@ class Address
 	validates_length_of :zipcode, :within => 0..250, :allow_nil => true
 	validates_length_of :city, :within => 0..250, :allow_nil => true
 	validates_length_of :country, :within => 0..250, :allow_nil => true
+
+
+	def contact
+		return self._root_document
+	end
 
 end
