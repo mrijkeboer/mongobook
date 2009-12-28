@@ -11,7 +11,7 @@ class ContactsController < ApplicationController
 		if @search_key = params[:search_key]
 			@contacts = Contact.find(
 				:all,
-				:conditions => {:search_key => /#{@search_key.downcase}/},
+				:conditions => {:search_key => /#{@search_key.to_s.downcase}/},
 				:order => 'sort_key'
 			)
 		else
@@ -66,6 +66,7 @@ class ContactsController < ApplicationController
 			flash[:notice] = 'Contact deleted.'
 		end
 
+	ensure
 		redirect_to contacts_url
 	end
 
