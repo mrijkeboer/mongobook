@@ -27,6 +27,7 @@ body {
 }
 
 #sign_in #content label {
+	font-size: 0.875em;
 	font-weight: bold;
 	display: block;
 	margin: 0;
