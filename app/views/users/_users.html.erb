@@ -5,11 +5,15 @@
 		</td>
 
 		<td>
-			<%= link_to 'Edit', edit_user_url(user) %>
+			<div class="edit">
+				<%= link_to 'Edit', edit_user_url(user) %>
+			</div>
 		</td>
 
 		<td>
-			<%= link_to 'Delete', user_url(user), :method => :delete %>
+			<div class="edit">
+				<%= link_to 'Delete', user_url(user), :method => :delete %>
+			</div>
 		</td>
 
 	</tr>

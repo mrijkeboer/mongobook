@@ -1,11 +1,9 @@
 <h1>Users</h1>
+
 <table>
-	<tr>
-		<th>Username</th>
-	</tr>
-
 	<%= render :partial => 'users' %>
-
 </table>
 
-<p><%= link_to 'Add user', new_user_url -%></p>
+<div class="add">
+	<p><%= link_to 'Add user', new_user_url -%></p>
+</div>
