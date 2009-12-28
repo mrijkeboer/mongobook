@@ -8,6 +8,18 @@
 		<%= javascript_include_tag :defaults %>
 	</head>
 	<body>
-		<%= yield :layout %>
+		<div id="sign_in">
+			<div id="header">
+				<h1>Sign in</h1>	
+			</div>
+
+			<div id="content">
+				<%= yield :layout %>
+			</div>
+
+			<div id="footer">
+			</div>
+		</div>
+
 	</body>
 </html>
