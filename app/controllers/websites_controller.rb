@@ -55,7 +55,7 @@ class WebsitesController < ApplicationController
 
 		if @contact.websites.delete(@website)
 			if @contact.save
-				flash[:notice] = 'website deleted.'
+				flash[:notice] = 'Website deleted.'
 			end
 		end
 
