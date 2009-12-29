@@ -33,7 +33,7 @@ class InstantMessagingTest < ActiveSupport::TestCase
 	#
 	# type
 	#
-	test "ensure length of type within 1..250" do
+	test "ensure length of type within 1..6" do
 		im = InstantMessaging.new
 
 		im.type = nil
@@ -48,11 +48,11 @@ class InstantMessagingTest < ActiveSupport::TestCase
 		im.valid?
 		assert !im.errors.invalid?(:type)
 
-		im.type = 'x' * 250
+		im.type = 'x' * 6
 		im.valid?
 		assert !im.errors.invalid?(:type)
 
-		im.type = 'x' * 251
+		im.type = 'x' * 7
 		im.valid?
 		assert im.errors.invalid?(:type)
 	end

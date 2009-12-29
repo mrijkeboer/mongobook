@@ -11,7 +11,7 @@
 
 		<tr>
 			<th><label for="instant_messaging_type">Type:</label></th>
-			<td><%= form.text_field :type %></td>
+			<td><%= form.select :type, InstantMessaging::TYPES %></td>
 			<td><%= error_message_on :instant_messaging, :type %></td>
 		</tr>                                   
 

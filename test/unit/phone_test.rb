@@ -33,7 +33,7 @@ class PhoneTest < ActiveSupport::TestCase
 	#
 	# type
 	#
-	test "ensure length of type within 1..250" do
+	test "ensure length of type within 1..6" do
 		phone = Phone.new
 
 		phone.type = nil
@@ -48,11 +48,11 @@ class PhoneTest < ActiveSupport::TestCase
 		phone.valid?
 		assert !phone.errors.invalid?(:type)
 
-		phone.type = 'x' * 250
+		phone.type = 'x' * 6
 		phone.valid?
 		assert !phone.errors.invalid?(:type)
 
-		phone.type = 'x' * 251
+		phone.type = 'x' * 7
 		phone.valid?
 		assert phone.errors.invalid?(:type)
 	end

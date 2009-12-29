@@ -10,7 +10,7 @@
 
 		<tr>
 			<th><label for="phone_type">Type:</label></th>
-			<td><%= form.text_field :type %></td>
+			<td><%= form.select :type, Phone::TYPES %></td>
 			<td><%= error_message_on :phone, :type %></td>
 		</tr>                                   
 
