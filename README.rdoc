@@ -4,7 +4,7 @@ A Ruby on Rails addressbook which uses Mongo as database.
 
 == Install
 
-First install MongoDB (binaries are available on http://www.mongodb.org/).
+First install MongoDB (binaries are available on http://www.mongodb.org).
 
 Download the addressbook source:
 
@@ -14,6 +14,8 @@ Install the needed gems:
 
  $ cd addressbook
  $ rake gems:install
+
+You're ready.
 
 == Dependencies
 
