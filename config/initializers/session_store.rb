@@ -5,7 +5,7 @@
 # Make sure the secret is at least 30 characters and all random, 
 # no regular words or you'll be exposed to dictionary attacks.
 ActionController::Base.session = {
-  :key         => '_addressbook.git_session',
+  :key         => 'mongobook_session',
   :secret      => '91322d11d2b0e7bb9aa9617f6655a53a37bff286f7ca195c411255a9309700b90d736cc310a8b80926b3cdb41f5cf4042a937649d8ab715a56a5b53a1d585ca4'
 }
 

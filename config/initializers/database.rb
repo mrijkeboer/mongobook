@@ -1,6 +1,6 @@
 include MongoMapper
 
-MongoMapper.database = "addressbook-#{Rails.env}"
+MongoMapper.database = "mongobook-#{Rails.env}"
 
 # It's also possible to define indexes in the the model itself; however,
 # a few issues are being worked out still. This is a temporary solution.

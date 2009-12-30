@@ -1,4 +1,4 @@
-xml.addressbook do
+xml.mongobook do
 	xml.contacts do
 		for contact in @contacts
 			xml.contact(:name => contact.name, :sortkey => contact.sort_key) do
