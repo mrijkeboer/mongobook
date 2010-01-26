@@ -19,7 +19,7 @@ module EmailFactory
 
 		def client.email!(params = {})
 			obj = Factory.email(params)
-			obj.save!
+			obj.save
 			obj
 		end
 

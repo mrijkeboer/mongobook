@@ -19,7 +19,7 @@ module TwitterFactory
 
 		def client.twitter!(params = {})
 			obj = Factory.twitter(params)
-			obj.save!
+			obj.save
 			obj
 		end
 

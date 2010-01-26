@@ -20,7 +20,7 @@ module InstantMessagingFactory
 
 		def client.instant_messaging!(params = {})
 			obj = Factory.instant_messaging(params)
-			obj.save!
+			obj.save
 			obj
 		end
 

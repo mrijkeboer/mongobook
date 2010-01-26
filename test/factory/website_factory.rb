@@ -19,7 +19,7 @@ module WebsiteFactory
 
 		def client.website!(params = {})
 			obj = Factory.website(params)
-			obj.save!
+			obj.save
 			obj
 		end
 

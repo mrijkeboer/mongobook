@@ -20,7 +20,7 @@ module PhoneFactory
 
 		def client.phone!(params = {})
 			obj = Factory.phone(params)
-			obj.save!
+			obj.save
 			obj
 		end
 

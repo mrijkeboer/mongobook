@@ -22,7 +22,7 @@ module AddressFactory
 
 		def client.address!(params = {})
 			obj = Factory.address(params)
-			obj.save!
+			obj.save
 			obj
 		end
 
