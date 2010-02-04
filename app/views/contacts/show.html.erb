@@ -65,7 +65,11 @@
 		</tr>
 	<% end %>
 	<tr>
-		<th>&nbsp;</th>
+		<% if counter == 0 %>
+			<th>Address</th>
+		<% else %>
+			<th>&nbsp;</th>
+		<% end %>
 		<td>
 			<div class="add"><%= link_to 'Add an address', new_contact_address_url(@contact.id) -%></div>
 		</td>
@@ -98,7 +102,11 @@
 		<% counter += 1 %>
 	<% end %>
 	<tr>
-		<th>&nbsp;</th>
+		<% if counter == 0 %>
+			<th>Phone</th>
+		<% else %>
+			<th>&nbsp;</th>
+		<% end %>
 		<td>
 			<div class="add"><%= link_to 'Add a phone number', new_contact_phone_url(@contact.id) -%></div>
 		</td>
@@ -131,7 +139,11 @@
 		<% counter += 1 %>
 	<% end %>
 	<tr>
-		<th>&nbsp;</th>
+		<% if counter == 0 %>
+			<th>Email</th>
+		<% else %>
+			<th>&nbsp;</th>
+		<% end %>
 		<td>
 			<div class="add"><%= link_to 'Add an email address', new_contact_email_url(@contact.id) -%></div>
 		</td>
@@ -164,7 +176,11 @@
 		<% counter += 1 %>
 	<% end %>
 	<tr>
-		<th>&nbsp;</th>
+		<% if counter == 0 %>
+			<th>Website</th>
+		<% else %>
+			<th>&nbsp;</th>
+		<% end %>
 		<td>
 			<div class="add"><%= link_to 'Add a website', new_contact_website_url(@contact.id) -%></div>
 		</td>
@@ -197,7 +213,11 @@
 		<% counter += 1 %>
 	<% end %>
 	<tr>
-		<th>&nbsp;</th>
+		<% if counter == 0 %>
+			<th>Twitter</th>
+		<% else %>
+			<th>&nbsp;</th>
+		<% end %>
 		<td>
 			<div class="add"><%= link_to 'Add a twitter username', new_contact_twitter_url(@contact.id) -%></div>
 		</td>
@@ -230,7 +250,11 @@
 		<% counter += 1 %>
 	<% end %>
 	<tr>
-		<th>&nbsp;</th>
+		<% if counter == 0 %>
+			<th>Im</th>
+		<% else %>
+			<th>&nbsp;</th>
+		<% end %>
 		<td>
 			<div class="add"><%= link_to 'Add an instant message account', new_contact_instant_messaging_url(@contact.id) -%></div>
 		</td>
