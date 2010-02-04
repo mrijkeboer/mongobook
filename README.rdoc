@@ -27,4 +27,4 @@ You're ready.
 
 == Copyright
 
-Copyright (c) 2009 Martijn P. Rijkeboer. See BSD-LICENSE for details.
+Copyright (c) 2009-2010 Martijn P. Rijkeboer. See BSD-LICENSE for details.
