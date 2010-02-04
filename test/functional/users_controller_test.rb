@@ -61,6 +61,16 @@ class UsersControllerTest < ActionController::TestCase
 	end
 
 
+	test "on GET to :new with no users in DB should show new" do
+		@account.delete
+
+		get :new
+		assert_response :success
+		assert_template :new
+		assert_not_nil assigns(:user)
+	end
+
+
 	#
 	# edit
 	#
@@ -92,6 +102,17 @@ class UsersControllerTest < ActionController::TestCase
 	test "on POST to :create should create user" do
 		assert_difference('User.count', 1) do
 			post :create, {:user => {:username => 'user2', :password => 'password', :password_confirmation => 'password'}}, {:user_id => @account.id}
+		end
+
+		assert_equal "User created.", flash[:notice]
+	end
+
+
+	test "on POST to :create with no users in DB should create user" do
+		@account.delete
+
+		assert_difference('User.count', 1) do
+			post :create, {:user => Factory.user_attributes}
 		end
 
 		assert_equal "User created.", flash[:notice]

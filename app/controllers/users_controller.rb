@@ -1,12 +1,7 @@
 class UsersController < ApplicationController
 
-	before_filter do |controller|
-		if User.count > 0
-			before_filter :check_signed_in
-		else
-			before_filter :check_signed_in, :except => [:new, :create]
-		end
-	end
+	before_filter :check_signed_in, :except => [:new, :create]
+	before_filter :check_signed_in_and_user_count, :only => [:new, :create]
 
 
 	def index

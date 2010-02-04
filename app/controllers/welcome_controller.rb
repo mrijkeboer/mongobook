@@ -1,6 +1,6 @@
 class WelcomeController < ApplicationController
 
-	before_filter :check_user_count
+	before_filter :check_user_count, :only => :sign_in
 	before_filter :check_signed_in, :except => :sign_in
 
 
@@ -26,6 +26,16 @@ class WelcomeController < ApplicationController
 		session[:user_id] = nil
 		session[:orig_url] = nil
 		redirect_to sign_in_url
+	end
+
+
+	private
+
+
+	def check_user_count
+		if User.count == 0
+			redirect_to new_user_url
+		end
 	end
 
 end
