@@ -4,9 +4,7 @@ module ContactFactory
 
 		def client.contact_attributes
 			{
-				:name => 'Test Contact',
-				:sort_key => 'contact test',
-				:search_key => 'testcontact'
+				:name => 'Test Contact'
 			}
 		end
 

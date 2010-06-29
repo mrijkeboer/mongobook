@@ -54,6 +54,15 @@ class ContactTest < ActiveSupport::TestCase
 	end
 
 
+	test "ensure sort_key is set before saving" do
+		contact = Factory.contact
+		assert contact.sort_key.to_s.length == 0
+
+		contact.save
+		assert contact.sort_key.to_s.length > 0
+	end
+
+
 	#
 	# search_key
 	#
@@ -75,6 +84,15 @@ class ContactTest < ActiveSupport::TestCase
 		contact.search_key = 'x' * 251
 		contact.valid?
 		assert contact.errors.invalid?(:search_key)
+	end
+
+
+	test "ensure search_key is set before saving" do
+		contact = Factory.contact
+		assert contact.search_key.to_s.length == 0
+		
+		contact.save
+		assert contact.search_key.to_s.length > 0
 	end
 
 end

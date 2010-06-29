@@ -19,7 +19,9 @@ class Contact
 
 	timestamps!
 
-	def before_save
+	before_save :set_keys
+
+	def set_keys
 		self[:search_key] = self.name.to_s.delete(" ").downcase
 
 		if self.sort_key.to_s.length == 0
