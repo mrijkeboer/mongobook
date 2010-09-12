@@ -30,8 +30,7 @@ class AddressesController < ApplicationController
 		@contact.addresses << @address
 
 		if @contact.save
-			flash[:notice] = 'Address added.'
-			redirect_to contact_url(@contact)
+			redirect_to contact_url(@contact), :notice => 'Address added.'
 		else
 			render :action => :new
 		end
@@ -42,8 +41,7 @@ class AddressesController < ApplicationController
 		@address = @contact.addresses.find(params[:id])
 
 		if @address.update_attributes(params[:address])
-			flash[:notice] = 'Address updated.'
-			redirect_to contact_url(@contact)
+			redirect_to contact_url(@contact), :notice => 'Address updated.'
 		else
 			render :action => :edit
 		end
@@ -55,7 +53,7 @@ class AddressesController < ApplicationController
 
 		if @contact.addresses.delete(@address)
 			if @contact.save
-				flash[:notice] = 'Address deleted.'
+				flash.now[:notice] = 'Address deleted.'
 			end
 		end
 

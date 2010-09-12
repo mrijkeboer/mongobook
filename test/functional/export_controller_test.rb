@@ -1,4 +1,5 @@
-require File.dirname(__FILE__) + "/../test_helper"
+require File.expand_path("../../test_helper", __FILE__)
+require File.expand_path("../../factory", __FILE__)
 
 class ExportControllerTest < ActionController::TestCase
 

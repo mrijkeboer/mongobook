@@ -1,30 +1,30 @@
 <h1>Edit address</h1>                                          
 
-<% form_for(:address, :url => contact_address_url(@contact.id, @address), :html => {:method => :put }) do |form| %>
+<%= form_for(:address, :url => contact_address_url(@contact.id, @address), :html => {:method => :put }) do |form| %>
 
 	<table class="edit">
 		<tr>
 			<th><label for="address_address">Address:</label></th>
 			<td><%= form.text_field :address %></td>
-			<td><%= error_message_on :address, :address %></td>
+			<td><%= @address.errors[:address].first %></td>
 		</tr>                                   
 
 		<tr>
 			<th><label for="address_zipcode">Zipcode:</label></th>
 			<td><%= form.text_field :zipcode %></td>
-			<td><%= error_message_on :address, :zipcode %></td>
+			<td><%= @address.errors[:zipcode].first %></td>
 		</tr>                                   
 
 		<tr>
 			<th><label for="address_city">City:</label></th>
 			<td><%= form.text_field :city %></td>
-			<td><%= error_message_on :address, :city %></td>
+			<td><%= @address.errors[:city].first %></td>
 		</tr>                                   
 
 		<tr>
 			<th><label for="address_country">Country:</label></th>
 			<td><%= form.text_field :country %></td>
-			<td><%= error_message_on :address, :country %></td>
+			<td><%= @address.errors[:country].first %></td>
 		</tr>                                   
 
 		<tr>

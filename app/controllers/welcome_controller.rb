@@ -4,6 +4,11 @@ class WelcomeController < ApplicationController
 	before_filter :check_signed_in, :except => :sign_in
 
 
+	def index
+		redirect_to sign_in_url
+	end
+
+
 	def sign_in
 		session[:user_id] = nil
 
@@ -16,7 +21,7 @@ class WelcomeController < ApplicationController
 				session[:orig_uri] = nil
 				redirect_to uri
 			else
-				flash[:error] = "Invalid username/password combination"
+				flash.now[:error] = "Invalid username/password combination"
 			end
 		end
 	end

@@ -30,8 +30,7 @@ class TwittersController < ApplicationController
 		@contact.twitters << @twitter
 
 		if @contact.save
-			flash[:notice] = 'Twitter added.'
-			redirect_to contact_url(@contact)
+			redirect_to contact_url(@contact), :notice => 'Twitter added.'
 		else
 			render :action => :new
 		end
@@ -42,8 +41,7 @@ class TwittersController < ApplicationController
 		@twitter = @contact.twitters.find(params[:id])
 
 		if @twitter.update_attributes(params[:twitter])
-			flash[:notice] = 'Twitter updated.'
-			redirect_to contact_url(@contact)
+			redirect_to contact_url(@contact), :notice => 'Twitter updated.'
 		else
 			render :action => :edit
 		end
@@ -55,7 +53,7 @@ class TwittersController < ApplicationController
 
 		if @contact.twitters.delete(@twitter)
 			if @contact.save
-				flash[:notice] = 'Twitter deleted.'
+				flash.now[:notice] = 'Twitter deleted.'
 			end
 		end
 

@@ -6,13 +6,14 @@
 		<title>MongoBook</title>
 		<%= stylesheet_link_tag "style.css", :media => "all" %>
 		<%= javascript_include_tag :defaults %>
+		<%= csrf_meta_tag %>
 	</head>
 	<body>
 		<div id="container">
 			<div id="header">
 
 				<div id="search">
-					<% form_tag '/contacts/search' do %>
+					<%= form_tag '/contacts/search' do %>
 						<%= text_field_tag :search_key, params[:search_key], :class => 'searchtext'-%>
 						<%= submit_tag "Search" -%>
 					<% end %>

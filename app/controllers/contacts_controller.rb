@@ -9,11 +9,7 @@ class ContactsController < ApplicationController
 
 	def search
 		if @search_key = params[:search_key]
-			@contacts = Contact.find(
-				:all,
-				:conditions => {:search_key => /#{@search_key.to_s.downcase}/},
-				:order => 'sort_key'
-			)
+			@contacts = Contact.where(:search_key => /#{@search_key.to_s.downcase}/).sort(:sort_key)
 		else
 			@contacts = Array.new
 		end
@@ -39,8 +35,7 @@ class ContactsController < ApplicationController
 		@contact = Contact.new(params[:contact])
 
 		if @contact.save
-			flash[:notice] = 'Contact created.'
-			redirect_to contact_url(@contact)
+			redirect_to contact_url(@contact), :notice => 'Contact created.'
 		else
 			render :action => 'new'
 		end
@@ -51,8 +46,7 @@ class ContactsController < ApplicationController
 		@contact = Contact.find(params[:id])
 
 		if @contact.update_attributes(params[:contact])
-			flash[:notice] = 'Contact updated.'
-			redirect_to contact_url(@contact)
+			redirect_to contact_url(@contact), :notice => 'Contact updated.'
 		else
 			render :action => 'edit'
 		end
@@ -63,7 +57,7 @@ class ContactsController < ApplicationController
 		@contact = Contact.find(params[:id])
 
 		if @contact.destroy
-			flash[:notice] = 'Contact deleted.'
+			flash.now[:notice] = 'Contact deleted.'
 		end
 
 	ensure

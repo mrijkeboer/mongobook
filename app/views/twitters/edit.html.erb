@@ -1,12 +1,12 @@
 <h1>Edit twitter</h1>                                          
 
-<% form_for(:twitter, :url => contact_twitter_url(@contact.id, @twitter), :html => {:method => :put }) do |form| %>
+<%= form_for(:twitter, :url => contact_twitter_url(@contact.id, @twitter), :html => {:method => :put }) do |form| %>
 
 	<table class="edit">
 		<tr>
 			<th><label for="twitter_username">Username:</label></th>
 			<td><%= form.text_field :username %></td>
-			<td><%= error_message_on :twitter, :username %></td>
+			<td><%= @twitter.errors[:username].first %></td>
 		</tr>                                   
 
 		<tr>

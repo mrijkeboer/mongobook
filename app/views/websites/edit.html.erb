@@ -1,12 +1,12 @@
 <h1>Edit website</h1>                                          
 
-<% form_for(:website, :url => contact_website_url(@contact.id, @website), :html => {:method => :put }) do |form| %>
+<%= form_for(:website, :url => contact_website_url(@contact.id, @website), :html => {:method => :put }) do |form| %>
 
 	<table class="edit">
 		<tr>
 			<th><label for="website_url">Website:</label></th>
 			<td><%= form.text_field :url %></td>
-			<td><%= error_message_on :website, :url %></td>
+			<td><%= @website.errors[:url].first %></td>
 		</tr>                                   
 
 		<tr>

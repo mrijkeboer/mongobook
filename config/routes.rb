@@ -1,19 +1,46 @@
-ActionController::Routing::Routes.draw do |map|
+MongoBook::Application.routes.draw do
 
-	map.root :controller => 'welcome'
-	map.sign_in 'welcome/sign_in', :controller => 'welcome', :action => 'sign_in'
-	map.sign_out 'welcome/sign_out', :controller => 'welcome', :action => 'sign_out'
-	
-	map.resources :contacts, :collection => { :search => :post } do |contact|
-		contact.resources :addresses
-		contact.resources :emails
-		contact.resources :instant_messagings
-		contact.resources :phones
-		contact.resources :twitters
-		contact.resources :websites
+	root :to => 'welcome#index'
+
+	match '/sign_in',  :to => 'welcome#sign_in'
+	match '/sign_out', :to => 'welcome#sign_out'
+
+	resources :contacts do
+		collection do
+			post 'search'
+		end
+
+		resources :addresses
+		resources :emails
+		resources :instant_messagings
+		resources :phones
+		resources :twitters
+		resources :websites
 	end
 
-	map.resources :users
+	resources :users
 
-	map.export 'export/all', :controller => 'export', :action => 'all'
+	match '/export/all', :to => 'export#all', :as => 'export'
+
+
+  # Sample resource route with options:
+  #   resources :products do
+  #     member do
+  #       get 'short'
+  #       post 'toggle'
+  #     end
+  #
+  #     collection do
+  #       get 'sold'
+  #     end
+  #   end
+
+  # Sample resource route with more complex sub-resources
+  #   resources :products do
+  #     resources :comments
+  #     resources :sales do
+  #       get 'recent', :on => :collection
+  #     end
+  #   end
+
 end

@@ -1,17 +1,17 @@
 <h1>Add instant messaging</h1>                                          
 
-<% form_for(:instant_messaging, :url => contact_instant_messagings_url(@contact.id)) do |form| %>
+<%= form_for(:instant_messaging, :url => contact_instant_messagings_url(@contact.id)) do |form| %>
 	<table class="edit">
 		<tr>
 			<th><label for="instant_messaging_account">Account:</label></th>
 			<td><%= form.text_field :account %></td>
-			<td><%= error_message_on :instant_messaging, :account %></td>
+			<td><%= @instant_messaging.errors[:account].first %></td>
 		</tr>                                   
 
 		<tr>
 			<th><label for="instant_messaging_type">Type:</label></th>
 			<td><%= form.select :type, InstantMessaging::TYPES %></td>
-			<td><%= error_message_on :instant_messaging, :type %></td>
+			<td><%= @instant_messaging.errors[:type].first %></td>
 		</tr>                                   
 
 		<tr>

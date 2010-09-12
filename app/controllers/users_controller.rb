@@ -28,8 +28,7 @@ class UsersController < ApplicationController
 		@user = User.new(params[:user])
 
 		if @user.save
-			flash[:notice] = 'User created.'
-			redirect_to users_url
+			redirect_to users_url, :notice => 'User created.'
 		else
 			render :action => 'new'
 		end
@@ -40,8 +39,7 @@ class UsersController < ApplicationController
 		@user = User.find(params[:id])
 
 		if @user.update_attributes(params[:user])
-			flash[:notice] = 'User updated.'
-			redirect_to users_url
+			redirect_to users_url, :notice => 'User updated.'
 		else
 			render :action => 'edit'
 		end
@@ -52,7 +50,7 @@ class UsersController < ApplicationController
 		@user = User.find(params[:id])
 
 		if @user.destroy
-			flash[:notice] = 'User deleted.'
+			flash.now[:notice] = 'User deleted.'
 		end
 
 		redirect_to users_url

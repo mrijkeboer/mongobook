@@ -1,11 +1,11 @@
 <h1>Add email</h1>                                          
 
-<% form_for(:email, :url => contact_emails_url(@contact.id)) do |form| %>
+<%= form_for(:email, :url => contact_emails_url(@contact.id)) do |form| %>
 	<table class="edit">
 		<tr>
 			<th><label for="email_address">Address:</label></th>
 			<td><%= form.text_field :address %></td>
-			<td><%= error_message_on :email, :address %></td>
+			<td><%= @email.errors[:address].first %></td>
 		</tr>                                   
 
 		<tr>

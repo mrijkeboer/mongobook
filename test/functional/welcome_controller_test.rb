@@ -1,5 +1,5 @@
-require File.dirname(__FILE__) + "/../test_helper"
-require File.dirname(__FILE__) + "/../factory"
+require File.expand_path("../../test_helper", __FILE__)
+require File.expand_path("../../factory", __FILE__)
 
 class WelcomeControllerTest < ActionController::TestCase
 

@@ -1,18 +1,18 @@
 <h1>Edit phone</h1>                                          
 
-<% form_for(:phone, :url => contact_phone_url(@contact.id, @phone), :html => {:method => :put }) do |form| %>
+<%= form_for(:phone, :url => contact_phone_url(@contact.id, @phone), :html => {:method => :put }) do |form| %>
 
 	<table class="edit">
 		<tr>
 			<th><label for="phone_number">Number:</label></th>
 			<td><%= form.text_field :number %></td>
-			<td><%= error_message_on :phone, :number %></td>
+			<td><%= @phone.errors[:number].first %></td>
 		</tr>                                   
 
 		<tr>
 			<th><label for="phone_type">Type:</label></th>
 			<td><%= form.select :type, Phone::TYPES %></td>
-			<td><%= error_message_on :phone, :type %></td>
+			<td><%= @phone.errors[:type].first %></td>
 		</tr>                                   
 
 		<tr>

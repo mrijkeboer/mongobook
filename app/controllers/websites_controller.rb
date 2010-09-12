@@ -30,8 +30,7 @@ class WebsitesController < ApplicationController
 		@contact.websites << @website
 
 		if @contact.save
-			flash[:notice] = 'Website added.'
-			redirect_to contact_url(@contact)
+			redirect_to contact_url(@contact), :notice => 'Website added.'
 		else
 			render :action => :new
 		end
@@ -42,8 +41,7 @@ class WebsitesController < ApplicationController
 		@website = @contact.websites.find(params[:id])
 
 		if @website.update_attributes(params[:webiste])
-			flash[:notice] = 'Website updated.'
-			redirect_to contact_url(@contact)
+			redirect_to contact_url(@contact), :notice => 'Website updated.'
 		else
 			render :action => :edit
 		end
@@ -55,7 +53,7 @@ class WebsitesController < ApplicationController
 
 		if @contact.websites.delete(@website)
 			if @contact.save
-				flash[:notice] = 'Website deleted.'
+				flash.now[:notice] = 'Website deleted.'
 			end
 		end
 

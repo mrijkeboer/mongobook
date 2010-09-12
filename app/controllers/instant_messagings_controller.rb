@@ -30,8 +30,7 @@ class InstantMessagingsController < ApplicationController
 		@contact.instant_messagings << @instant_messaging
 
 		if @contact.save
-			flash[:notice] = 'Instant messaging added.'
-			redirect_to contact_url(@contact)
+			redirect_to contact_url(@contact), :notice => 'Instant messaging added.'
 		else
 			render :action => :new
 		end
@@ -42,8 +41,7 @@ class InstantMessagingsController < ApplicationController
 		@instant_messaging = @contact.instant_messagings.find(params[:id])
 
 		if @instant_messaging.update_attributes(params[:instant_messaging])
-			flash[:notice] = 'Instant messaging updated.'
-			redirect_to contact_url(@contact)
+			redirect_to contact_url(@contact), :notice => 'Instant messaging updated.'
 		else
 			render :action => :edit
 		end
@@ -55,7 +53,7 @@ class InstantMessagingsController < ApplicationController
 
 		if @contact.instant_messagings.delete(@instant_messaging)
 			if @contact.save
-				flash[:notice] = 'Instant messaging deleted.'
+				flash.now[:notice] = 'Instant messaging deleted.'
 			end
 		end
 

@@ -30,8 +30,7 @@ class EmailsController < ApplicationController
 		@contact.emails << @email
 
 		if @contact.save
-			flash[:notice] = 'Email added.'
-			redirect_to contact_url(@contact)
+			redirect_to contact_url(@contact), :notice => 'Email added.'
 		else
 			render :action => :new
 		end
@@ -42,8 +41,7 @@ class EmailsController < ApplicationController
 		@email = @contact.emails.find(params[:id])
 
 		if @email.update_attributes(params[:email])
-			flash[:notice] = 'Email updated.'
-			redirect_to contact_url(@contact)
+			redirect_to contact_url(@contact), :notice => 'Email updated.'
 		else
 			render :action => :edit
 		end
@@ -55,7 +53,7 @@ class EmailsController < ApplicationController
 
 		if @contact.emails.delete(@email)
 			if @contact.save
-				flash[:notice] = 'Email deleted.'
+				flash.now[:notice] = 'Email deleted.'
 			end
 		end
 

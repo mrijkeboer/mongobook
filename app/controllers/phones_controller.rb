@@ -30,8 +30,7 @@ class PhonesController < ApplicationController
 		@contact.phones << @phone
 
 		if @contact.save
-			flash[:notice] = 'Phone added.'
-			redirect_to contact_url(@contact)
+			redirect_to contact_url(@contact), :notice => 'Phone added.'
 		else
 			render :action => :new
 		end
@@ -42,8 +41,7 @@ class PhonesController < ApplicationController
 		@phone = @contact.phones.find(params[:id])
 
 		if @phone.update_attributes(params[:phone])
-			flash[:notice] = 'Phone updated.'
-			redirect_to contact_url(@contact)
+			redirect_to contact_url(@contact), :notice => 'Phone updated.'
 		else
 			render :action => :edit
 		end
@@ -55,7 +53,7 @@ class PhonesController < ApplicationController
 
 		if @contact.phones.delete(@phone)
 			if @contact.save
-				flash[:notice] = 'Phone deleted.'
+				flash.now[:notice] = 'Phone deleted.'
 			end
 		end
 
