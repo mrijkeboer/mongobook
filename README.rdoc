@@ -13,7 +13,7 @@ Download the MongoBook source:
 Install the needed gems:
 
  $ cd mongobook
- $ rake gems:install
+ $ bundle install
 
 You're ready.
 
@@ -22,7 +22,7 @@ You're ready.
  * Bcrypt Ruby (bcrypt-ruby)
  * Mongo Ruby Driver (mongo)
  * MongoMapper (mongo_mapper)
- * Rails (currently 2.3.5)
+ * Rails (currently 3.0.0)
  * Validatable (jnunemaker-validatable)
 
 == Copyright
