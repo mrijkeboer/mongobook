@@ -1,13 +1,19 @@
+html {
+	height: 100%;
+}
+
 body { 
 	color: #464445;
 	background-color: #888888;
+	height: 100%;
 	margin-top: 0;
 	font-size: 100%;
 }
 
 #sign_in {
 	width: 28em;
-	margin: 3em auto 0 auto;
+	margin: 0 auto 0 auto;
+	padding-top: 3em;
 }
 
 #sign_in #header {
@@ -52,15 +58,18 @@ body {
 	background-color: #464445;
 }
 
-#container {
+#wrapper {
+	position: relative;
+	min-height: 100%;
 	margin-top: 0;
 	margin-left: 2em;
 	margin-right: 2em;
 	margin-bottom: 0;
 	padding: 0;
+	background-color: #ffffff;
 }
 
-#container #header {
+#wrapper #header {
 	background-color: #464445;
 	min-height: 4.5em;
 	padding-top: 0.5em;
@@ -96,14 +105,12 @@ body {
 	color: #ff8800;
 }
 
-#container #content {
-	background-color: #ffffff;
+#wrapper #content {
 	margin-top: 0em;
 	padding-top: 0.5em;
 	padding-left: 1em;
 	padding-right: 1em;
-	padding-bottom: 1em;
-	min-height: 22em;
+	padding-bottom: 2em;
 }
 
 #content h1 {
@@ -225,7 +232,11 @@ body {
 	padding: 0;
 }
 
-#container #footer {
+#wrapper #footer {
+	position: absolute;
+	left: 0;
+	right: 0;
+	bottom: 0;
 	height: 1em;
 	background-color: #464445;
 }
