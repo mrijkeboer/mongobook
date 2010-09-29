@@ -40,7 +40,7 @@ class WebsitesController < ApplicationController
 	def update
 		@website = @contact.websites.find(params[:id])
 
-		if @website.update_attributes(params[:webiste])
+		if @website.update_attributes(params[:website])
 			redirect_to contact_url(@contact), :notice => 'Website updated.'
 		else
 			render :action => :edit
