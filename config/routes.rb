@@ -1,9 +1,12 @@
 MongoBook::Application.routes.draw do
 
-	root :to => 'welcome#index'
+	root :to => 'sessions#new'
 
-	match '/sign_in',  :to => 'welcome#sign_in'
-	match '/sign_out', :to => 'welcome#sign_out'
+	match '/sign_in',  :to => 'sessions#new'
+	match '/sign_out', :to => 'sessions#destroy'
+
+	resources :sessions, :only => [:new, :create, :destroy]
+
 
 	resources :contacts do
 		collection do
@@ -22,25 +25,5 @@ MongoBook::Application.routes.draw do
 
 	match '/export/all', :to => 'export#all', :as => 'export'
 
-
-  # Sample resource route with options:
-  #   resources :products do
-  #     member do
-  #       get 'short'
-  #       post 'toggle'
-  #     end
-  #
-  #     collection do
-  #       get 'sold'
-  #     end
-  #   end
-
-  # Sample resource route with more complex sub-resources
-  #   resources :products do
-  #     resources :comments
-  #     resources :sales do
-  #       get 'recent', :on => :collection
-  #     end
-  #   end
 
 end
