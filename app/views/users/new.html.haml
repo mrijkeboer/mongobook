@@ -1,0 +1,21 @@
+%h1 New user
+= form_for(:user, :url => users_url) do |form|
+  %table.edit
+    %tr
+      %th
+        %label{:for => "user_username"} Username:
+      %td= form.text_field :username
+      %td= @user.errors[:username].first
+    %tr
+      %th
+        %label{:for => "user_password"} Password:
+      %td= form.password_field :password
+      %td= @user.errors[:password].first
+    %tr
+      %th
+        %label{:for => "user_password_confirmation"} Confirm:
+      %td= form.password_field :password_confirmation
+      %td= @user.errors[:password_confirmation].first
+    %tr
+      %th &nbsp;
+      %td= submit_tag "Save", :class => "button"

@@ -1,0 +1,31 @@
+- for contact in @contacts
+  %tr
+    %td
+      %h1.contact_name= link_to h(contact.name), contact_url(contact)
+      - for email in contact.emails
+        %p.contact_method
+          = mail_to email.address
+      - for phone in contact.phones
+        %p.contact_method
+          = h(phone.number)
+          (#{h(phone.type)})
+    %td
+      - address = ''
+      - if contact.address.to_s.length > 0
+        - address = contact.address
+      - if contact.city.to_s.length > 0
+        - if address.to_s.length > 0
+          - address += ', ' + contact.city
+        - else
+          - address = contact.city
+      - if contact.country.to_s.length > 0
+        - if address.to_s.length > 0
+          - address += ', ' + contact.country
+        - else
+          - address = contact.country
+      %p.contact_address= h(address)
+    %td
+      %p.contact_action
+        = link_to 'Details', contact_url(contact)
+        \&nbsp;
+        = link_to 'Delete', contact_url(contact), :method  => :delete

@@ -1,0 +1,26 @@
+!!!
+%html{"xml:lang" => "en", :xmlns => "http://www.w3.org/1999/xhtml"}
+  %head
+    %title MongoBook
+    = stylesheet_link_tag "style.css", :media => "all"
+    = javascript_include_tag :defaults
+    = csrf_meta_tag
+  %body
+    #wrapper
+      #header
+        #search
+          = form_tag '/contacts/search' do
+            = text_field_tag :search_key, params[:search_key], :class => 'searchtext'
+            = submit_tag "Search"
+        %h1 MongoBook
+        #navbar
+          = link_to 'Contacts', contacts_url
+          |
+          = link_to 'Export', export_url
+          |
+          = link_to 'Users', users_url
+          |
+          = link_to 'Sign out', sign_out_url
+      #content
+        = yield :layout
+      #footer

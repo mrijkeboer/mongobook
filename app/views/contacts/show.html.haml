@@ -1,0 +1,189 @@
+%table.show
+  %tr
+    %td{:colspan => "2"}
+      %h1= h(@contact.name)
+    %td
+      .edit= link_to 'Edit', edit_contact_url(@contact)
+  %tr
+    %th Sort key
+    %td= h(@contact.sort_key)
+  %tr
+    %th Created
+    %td= @contact.created_at.strftime('%Y-%m-%d')
+  %tr
+    %th Modified
+    %td= @contact.updated_at.strftime('%Y-%m-%d')
+
+%hr/
+
+%table.show
+  - counter = 0
+  - for address in @contact.addresses
+    %tr
+      - if counter == 0
+        %th Address
+      - else
+        %th &nbsp;
+      %td
+        - if address.address.to_s.length > 0
+          %div= h(address.address)
+
+        - if address.zipcode.to_s.length > 0
+          %div
+            = h(address.zipcode)
+            = h(address.city)
+        - elsif address.city.to_s.length > 0
+          %div= h(address.city)
+
+        - if address.country.to_s.length > 0
+          %div= h(address.country)
+
+        - counter += 1
+        - if counter < @contact.addresses.length
+          %br/
+      %td
+        .edit
+          = link_to 'Edit', edit_contact_address_url(@contact.id, address)
+          \&nbsp;
+          = link_to 'Delete', contact_address_url(@contact.id, address), :confirm => 'Are you sure?', :method => 'delete'
+  %tr
+    - if counter == 0
+      %th Address
+    - else
+      %th &nbsp;
+    %td
+      .add= link_to 'Add an address', new_contact_address_url(@contact.id)
+
+%hr/
+
+%table.show
+  - counter = 0
+  - for phone in @contact.phones
+    %tr
+      - if counter == 0
+        %th Phone
+      - else
+        %th &nbsp;
+      %td
+        %div
+          = h(phone.number)
+          (#{h(phone.type)})
+      %td
+        .edit
+          = link_to 'Edit', edit_contact_phone_url(@contact.id, phone)
+          \&nbsp;
+          = link_to 'Delete', contact_phone_url(@contact.id, phone), :confirm => 'Are you sure?', :method => 'delete'
+    - counter += 1
+  %tr
+    - if counter == 0
+      %th Phone
+    - else
+      %th &nbsp;
+    %td
+      .add= link_to 'Add a phone number', new_contact_phone_url(@contact.id)
+
+%hr/
+
+%table.show
+  - counter = 0
+  - for email in @contact.emails
+    %tr
+      - if counter == 0
+        %th Email
+      - else
+        %th &nbsp;
+      %td
+        %div= h(email.address)
+      %td
+        .edit
+          = link_to 'Edit', edit_contact_email_url(@contact.id, email)
+          \&nbsp;
+          = link_to 'Delete', contact_email_url(@contact.id, email), :confirm => 'Are you sure?', :method => 'delete'
+    - counter += 1
+  %tr
+    - if counter == 0
+      %th Email
+    - else
+      %th &nbsp;
+    %td
+      .add= link_to 'Add an email address', new_contact_email_url(@contact.id)
+
+%hr/
+
+%table.show
+  - counter = 0
+  - for website in @contact.websites
+    %tr
+      - if counter == 0
+        %th Website
+      - else
+        %th &nbsp;
+      %td
+        %div= h(website.url)
+      %td
+        .edit
+          = link_to 'Edit', edit_contact_website_url(@contact.id, website)
+          \&nbsp;
+          = link_to 'Delete', contact_website_url(@contact.id, website), :confirm => 'Are you sure?', :method => 'delete'
+    - counter += 1
+  %tr
+    - if counter == 0
+      %th Website
+    - else
+      %th &nbsp;
+    %td
+      .add= link_to 'Add a website', new_contact_website_url(@contact.id)
+
+%hr/
+
+%table.show
+  - counter = 0
+  - for twitter in @contact.twitters
+    %tr
+      - if counter == 0
+        %th Twitter
+      - else
+        %th &nbsp;
+      %td
+        %div= h(twitter.username)
+      %td
+        .edit
+          = link_to 'Edit', edit_contact_twitter_url(@contact.id, twitter)
+          \&nbsp;
+          = link_to 'Delete', contact_twitter_url(@contact.id, twitter), :confirm => 'Are you sure?', :method => 'delete'
+    - counter += 1
+  %tr
+    - if counter == 0
+      %th Twitter
+    - else
+      %th &nbsp;
+    %td
+      .add= link_to 'Add a twitter username', new_contact_twitter_url(@contact.id)
+
+%hr/
+
+%table.show
+  - counter = 0
+  - for im in @contact.instant_messagings
+    %tr
+      - if counter == 0
+        %th Im
+      - else
+        %th &nbsp;
+      %td
+        %div
+          = h(im.account)
+          (#{h(im.type)})
+      %td
+        .edit
+          = link_to 'Edit', edit_contact_instant_messaging_url(@contact.id, im)
+          \&nbsp;
+          = link_to 'Delete', contact_instant_messaging_url(@contact.id, im), :confirm => 'Are you sure?', :method => 'delete'
+    - counter += 1
+  %tr
+    - if counter == 0
+      %th Im
+    - else
+      %th &nbsp;
+    %td
+      .add= link_to 'Add an instant message account', new_contact_instant_messaging_url(@contact.id)

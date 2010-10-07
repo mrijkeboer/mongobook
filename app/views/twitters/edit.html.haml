@@ -1,0 +1,11 @@
+%h1 Edit twitter
+= form_for(:twitter, :url => contact_twitter_url(@contact.id, @twitter), :html => {:method => :put }) do |form|
+  %table.edit
+    %tr
+      %th
+        %label{:for => "twitter_username"} Username:
+      %td= form.text_field :username
+      %td= @twitter.errors[:username].first
+    %tr
+      %th &nbsp;
+      %td= submit_tag "Save", :class => "button"

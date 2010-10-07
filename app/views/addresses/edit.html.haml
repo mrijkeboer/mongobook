@@ -1,0 +1,26 @@
+%h1 Edit address
+= form_for(:address, :url => contact_address_url(@contact.id, @address), :html => {:method => :put }) do |form|
+  %table.edit
+    %tr
+      %th
+        %label{:for => "address_address"} Address:
+      %td= form.text_field :address
+      %td= @address.errors[:address].first
+    %tr
+      %th
+        %label{:for => "address_zipcode"} Zipcode:
+      %td= form.text_field :zipcode
+      %td= @address.errors[:zipcode].first
+    %tr
+      %th
+        %label{:for => "address_city"} City:
+      %td= form.text_field :city
+      %td= @address.errors[:city].first
+    %tr
+      %th
+        %label{:for => "address_country"} Country:
+      %td= form.text_field :country
+      %td= @address.errors[:country].first
+    %tr
+      %th &nbsp;
+      %td= submit_tag "Save", :class => "button"

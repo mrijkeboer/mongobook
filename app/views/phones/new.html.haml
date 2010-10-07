@@ -1,0 +1,16 @@
+%h1 Add phone
+= form_for(:phone, :url => contact_phones_url(@contact.id)) do |form|
+  %table.edit
+    %tr
+      %th
+        %label{:for => "phone_number"} Number:
+      %td= form.text_field :number
+      %td= @phone.errors[:number].first
+    %tr
+      %th
+        %label{:for => "phone_type"} Type:
+      %td= form.select :type, Phone::TYPES
+      %td= @phone.errors[:type].first
+    %tr
+      %th &nbsp;
+      %td= submit_tag "Add", :class => "button"

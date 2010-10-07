@@ -1,0 +1,13 @@
+!!!
+%html{"xml:lang" => "en", :xmlns => "http://www.w3.org/1999/xhtml"}
+  %head
+    %title MongoBook
+    = stylesheet_link_tag "style.css", :media => "all"
+    = javascript_include_tag :defaults
+    = csrf_meta_tag
+  %body
+    #sign_in
+      #header
+        %h1 Sign in
+      #content
+        = yield :layout

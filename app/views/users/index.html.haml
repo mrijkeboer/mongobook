@@ -1,0 +1,13 @@
+%h1 Users
+%table
+  - for user in @users
+    %tr
+      %td= h(user.username)
+      %td
+        .edit
+          = link_to 'Edit', edit_user_url(user)
+      %td
+        .edit
+          = link_to 'Delete', user_url(user), :method => :delete
+.add
+  %p= link_to 'Add user', new_user_url

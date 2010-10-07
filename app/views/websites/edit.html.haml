@@ -1,0 +1,11 @@
+%h1 Edit website
+= form_for(:website, :url => contact_website_url(@contact.id, @website), :html => {:method => :put }) do |form|
+  %table.edit
+    %tr
+      %th
+        %label{:for => "website_url"} Website:
+      %td= form.text_field :url
+      %td= @website.errors[:url].first
+    %tr
+      %th &nbsp;
+      %td= submit_tag "Save", :class => "button"

@@ -1,0 +1,16 @@
+%h1 Edit instant messaging
+= form_for(:instant_messaging, :url => contact_instant_messaging_url(@contact.id, @instant_messaging), :html => {:method => :put }) do |form|
+  %table.edit
+    %tr
+      %th
+        %label{:for => "instant_messaging_account"} Account:
+      %td= form.text_field :account
+      %td= @instant_messaging.errors[:account].first
+    %tr
+      %th
+        %label{:for => "instant_messaging_type"} Type:
+      %td= form.select :type, InstantMessaging::TYPES
+      %td= @instant_messaging.errors[:type].first
+    %tr
+      %th &nbsp;
+      %td= submit_tag "Save", :class => "button"

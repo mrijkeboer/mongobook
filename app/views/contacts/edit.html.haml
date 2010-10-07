@@ -1,0 +1,18 @@
+%h1 Edit contact
+= form_for(:contact, :url => contact_url(@contact), :html => {:method => :put }) do |form|
+  %table.edit
+    %tr
+      %th
+        %label{:for => "contact_name"}
+          %b Name:
+      %td= form.text_field :name
+      %td= @contact.errors[:name].first
+    %tr
+      %th
+        %label{:for => "contact_sortkey"}
+          %b Sort key:
+      %td= form.text_field :sort_key
+      %td= @contact.errors[:sort_key].first
+    %tr
+      %th &nbsp;
+      %td= submit_tag "Save", :class => "button"
