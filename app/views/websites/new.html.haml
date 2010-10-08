@@ -1,11 +1,10 @@
 %h1 Add website
-= form_for(:website, :url => contact_websites_url(@contact.id)) do |form|
+= form_for(:website, :url => contact_websites_url(@contact.id)) do |f|
   %table.edit
     %tr
-      %th
-        %label{:for => "website_url"} Website:
-      %td= form.text_field :url
-      %td= @website.errors[:url].first
+      %th= f.label :url, "Website:"
+      %td= f.text_field :url
+      %td.error= @website.errors[:url].first
     %tr
       %th &nbsp;
-      %td= submit_tag "Add", :class => "button"
+      %td= f.submit "Add", :class => "button"

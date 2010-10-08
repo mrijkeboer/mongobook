@@ -145,7 +145,7 @@ body {
 	text-align: right;
 }
 
-#content div.formError {
+#content .error {
 	color: #ff0000;
 }
 

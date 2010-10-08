@@ -1,11 +1,10 @@
 %h1 Add twitter
-= form_for(:twitter, :url => contact_twitters_url(@contact.id)) do |form|
+= form_for(:twitter, :url => contact_twitters_url(@contact.id)) do |f|
   %table.edit
     %tr
-      %th
-        %label{:for => "twitter_username"} Username:
-      %td= form.text_field :username
-      %td= @twitter.errors[:username].first
+      %th= f.label :username, "Username:"
+      %td= f.text_field :username
+      %td.error= @twitter.errors[:username].first
     %tr
       %th &nbsp;
-      %td= submit_tag "Add", :class => "button"
+      %td= f.submit "Add", :class => "button"

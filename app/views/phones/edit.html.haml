@@ -1,16 +1,14 @@
 %h1 Edit phone
-= form_for(:phone, :url => contact_phone_url(@contact.id, @phone), :html => {:method => :put }) do |form|
+= form_for(:phone, :url => contact_phone_url(@contact.id, @phone), :html => {:method => :put }) do |f|
   %table.edit
     %tr
-      %th
-        %label{:for => "phone_number"} Number:
-      %td= form.text_field :number
-      %td= @phone.errors[:number].first
+      %th= f.label :number, "Number:"
+      %td= f.text_field :number
+      %td.error= @phone.errors[:number].first
     %tr
-      %th
-        %label{:for => "phone_type"} Type:
-      %td= form.select :type, Phone::TYPES
-      %td= @phone.errors[:type].first
+      %th= f.label :type, "Type:"
+      %td= f.select :type, Phone::TYPES
+      %td.error= @phone.errors[:type].first
     %tr
       %th &nbsp;
-      %td= submit_tag "Save", :class => "button"
+      %td= f.submit "Save", :class => "button"

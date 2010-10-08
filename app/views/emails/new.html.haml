@@ -1,11 +1,10 @@
 %h1 Add email
-= form_for(:email, :url => contact_emails_url(@contact.id)) do |form|
+= form_for(:email, :url => contact_emails_url(@contact.id)) do |f|
   %table.edit
     %tr
-      %th
-        %label{:for => "email_address"} Address:
-      %td= form.text_field :address
-      %td= @email.errors[:address].first
+      %th= f.label :address, "Address:"
+      %td= f.text_field :address
+      %td.error= @email.errors[:address].first
     %tr
       %th &nbsp;
-      %td= submit_tag "Add", :class => "button"
+      %td= f.submit "Add", :class => "button"

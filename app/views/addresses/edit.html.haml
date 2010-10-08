@@ -1,26 +1,22 @@
 %h1 Edit address
-= form_for(:address, :url => contact_address_url(@contact.id, @address), :html => {:method => :put }) do |form|
+= form_for(:address, :url => contact_address_url(@contact.id, @address), :html => {:method => :put }) do |f|
   %table.edit
     %tr
-      %th
-        %label{:for => "address_address"} Address:
-      %td= form.text_field :address
-      %td= @address.errors[:address].first
+      %th= f.label :address, "Address:"
+      %td= f.text_field :address
+      %td.error= @address.errors[:address].first
     %tr
-      %th
-        %label{:for => "address_zipcode"} Zipcode:
-      %td= form.text_field :zipcode
-      %td= @address.errors[:zipcode].first
+      %th= f.label :zipcode, "Zipcode:"
+      %td= f.text_field :zipcode
+      %td.error= @address.errors[:zipcode].first
     %tr
-      %th
-        %label{:for => "address_city"} City:
-      %td= form.text_field :city
-      %td= @address.errors[:city].first
+      %th= f.label :city, "City:"
+      %td= f.text_field :city
+      %td.error= @address.errors[:city].first
     %tr
-      %th
-        %label{:for => "address_country"} Country:
-      %td= form.text_field :country
-      %td= @address.errors[:country].first
+      %th= f.label :country, "Country:"
+      %td= f.text_field :country
+      %td.error= @address.errors[:country].first
     %tr
       %th &nbsp;
-      %td= submit_tag "Save", :class => "button"
+      %td= f.submit "Save", :class => "button"
